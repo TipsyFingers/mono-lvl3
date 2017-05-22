@@ -240,3 +240,8 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+/mono-lvl3.DAL/mono-lvl3.DAL.csproj
+/mono-lvl3.DAL/packages.config
+/monp-lvl3.Models/Properties
+/monp-lvl3.Models/mono-lvl3.Models.csproj
+/monp-lvl3.Models/packages.config
