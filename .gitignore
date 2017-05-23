@@ -245,3 +245,8 @@ ModelManifest.xml
 /monp-lvl3.Models/Properties
 /monp-lvl3.Models/mono-lvl3.Models.csproj
 /monp-lvl3.Models/packages.config
+/mono-lvl3.Common/Properties/AssemblyInfo.cs
+/mono-lvl3.Models/Properties/AssemblyInfo.cs
+/mono-lvl3.Repository/Properties/AssemblyInfo.cs
+/mono-lvl3.DAL.Tests
+/mono-lvl3.Repository.Common/Properties/AssemblyInfo.cs

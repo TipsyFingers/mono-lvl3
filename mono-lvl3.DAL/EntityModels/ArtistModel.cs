@@ -1,10 +1,15 @@
-namespace mono_lvl3.Models.Models
-{
-    using System;
-    using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
+namespace mono_lvl3.DAL.EntityModels
+{
     public class Artist
     {
+        public Artist()
+        {
+            new Artist();
+        }
+
         public Guid Id { get; set; }
         public string ArtistName { get; set; }
         public string FName { get; set; }

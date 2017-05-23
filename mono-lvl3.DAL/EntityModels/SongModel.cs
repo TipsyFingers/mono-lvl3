@@ -1,10 +1,15 @@
-namespace mono_lvl3.Models.Models
-{
-    using System;
-    using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
+namespace mono_lvl3.DAL.EntityModels
+{
     public class Song
     {
+        public Song()
+        {
+            new Song();
+        }
+
         public Guid Id { get; set; }
         public string Name { get; set; }
         public decimal Duration { get; set; }
