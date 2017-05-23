@@ -1,9 +1,6 @@
 ﻿using mono_lvl3.DAL.EntityModels;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace mono_lvl3.Repository.Common
 {
@@ -11,5 +8,8 @@ namespace mono_lvl3.Repository.Common
     {
         IEnumerable<Artist> GetAll();
         Artist Get(Guid id);
+        void Add(Artist artist);
+        void Update(Artist artist);
+        void Remove(Guid id);
     }
 }
