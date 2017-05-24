@@ -1,24 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity.Migrations;
 using mono_lvl3.Repository.Common;
 using mono_lvl3.DAL.DbContext;
 using mono_lvl3.DAL.EntityModels;
-using System.Data.Entity.Migrations;
+using mono_lvl3.Models.DomainModels;
+using AutoMapper;
 
 namespace mono_lvl3.Repository
 {
-    class AlbumRepository : IAlbumRepository
+    public class AlbumRepository : IAlbumRepository
     {
         private DataContext _db = new DataContext();
 
-        public IEnumerable<Album> GetAll()
+        public IEnumerable<AlbumDomainModel> GetAll()
         {
             List<Album> data = _db.AlbumsModel.ToList();
-            return data;
+
+            return Mapper.Map(data, new List<AlbumDomainModel>());
         }
 
-        public Album Get(Guid id)
+        public AlbumDomainModel Get(Guid id)
         {
             if (id == null)
             {
@@ -32,26 +35,34 @@ namespace mono_lvl3.Repository
                 throw new ArgumentNullException("MODEL is null");
             }
 
-            return data;
+            return Mapper.Map(data, new AlbumDomainModel());
         }
 
-        public void Add(Album album)
+        public void Add(AlbumDomainModel albumDM)
         {
-            if (album == null)
+            if (albumDM == null)
             {
                 throw new ArgumentNullException("ALBUM is null");
             }
+
+            Album album = new Album();
+
+            album = Mapper.Map(albumDM, album);
 
             _db.AlbumsModel.Add(album);
             _db.SaveChanges();
         }
 
-        public void Update(Album album)
+        public void Update(AlbumDomainModel albumDM)
         {
-            if (album == null)
+            if (albumDM == null)
             {
                 throw new ArgumentNullException("ALBUM is null");
             }
+
+            Album album = new Album();
+
+            album = Mapper.Map(albumDM, album);
 
             _db.AlbumsModel.AddOrUpdate(album);
             _db.SaveChanges();

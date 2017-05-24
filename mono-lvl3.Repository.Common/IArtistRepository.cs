@@ -1,4 +1,4 @@
-﻿using mono_lvl3.DAL.EntityModels;
+﻿using mono_lvl3.Models.DomainModels;
 using System;
 using System.Collections.Generic;
 
@@ -6,10 +6,10 @@ namespace mono_lvl3.Repository.Common
 {
     public interface IArtistRepository
     {
-        IEnumerable<Artist> GetAll();
-        Artist Get(Guid id);
-        void Add(Artist artist);
-        void Update(Artist artist);
+        IEnumerable<ArtistDomainModel> GetAll();
+        ArtistDomainModel Get(Guid id);
+        void Add(ArtistDomainModel artistDM);
+        void Update(ArtistDomainModel artist);
         void Remove(Guid id);
     }
 }

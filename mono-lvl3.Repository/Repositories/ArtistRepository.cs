@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity.Migrations;
 using mono_lvl3.Repository.Common;
 using mono_lvl3.DAL.EntityModels;
 using mono_lvl3.DAL.DbContext;
-using System.Data.Entity.Migrations;
+using mono_lvl3.Models.DomainModels;
+using AutoMapper;
 
 namespace mono_lvl3.Repository
 {
@@ -12,46 +14,54 @@ namespace mono_lvl3.Repository
     {
         private DataContext _db = new DataContext();
 
-        public IEnumerable<Artist> GetAll()
+        public IEnumerable<ArtistDomainModel> GetAll()
         {
             List<Artist> data = _db.ArtistsModel.ToList();
-            return data;
+
+            return Mapper.Map(data, new List<ArtistDomainModel>());
         }
 
-        public Artist Get(Guid id)
+        public ArtistDomainModel Get(Guid id)
         {
-            if(id == null)
+            if (id == null)
             {
                 throw new ArgumentNullException("ID is null");
             }
 
             Artist data = _db.ArtistsModel.Where(m => m.Id == id).FirstOrDefault();
 
-            if(data == null)
+            if (data == null)
             {
                 throw new ArgumentNullException("MODEL is null");
             }
 
-            return data;
+            return Mapper.Map(data, new ArtistDomainModel());
         }
 
-        public void Add(Artist artist)
+        public void Add(ArtistDomainModel artistDM)
         {
-            if(artist == null)
+            if (artistDM == null)
             {
                 throw new ArgumentNullException("ARTIST is null");
             }
+
+            Artist artist = new Artist();
+
+            artist = Mapper.Map(artistDM, artist);
 
             _db.ArtistsModel.Add(artist);
             _db.SaveChanges();
         }
 
-        public void Update(Artist artist)
+        public void Update(ArtistDomainModel artistDM)
         {
-            if (artist == null)
+            if (artistDM == null)
             {
                 throw new ArgumentNullException("ARTIST is null");
             }
+
+            Artist artist = new Artist();
+            artist = Mapper.Map(artistDM, artist);
 
             _db.ArtistsModel.AddOrUpdate(artist);
             _db.SaveChanges();

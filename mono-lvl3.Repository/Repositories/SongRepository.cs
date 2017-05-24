@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity.Migrations;
 using mono_lvl3.Repository.Common;
 using mono_lvl3.DAL.EntityModels;
 using mono_lvl3.DAL.DbContext;
-using System.Data.Entity.Migrations;
+using mono_lvl3.Models.DomainModels;
+using AutoMapper;
 
 namespace mono_lvl3.Repository
 {
@@ -12,13 +14,14 @@ namespace mono_lvl3.Repository
     {
         private DataContext _db = new DataContext();
 
-        public IEnumerable<Song> GetAll()
+        public IEnumerable<SongDomainModel> GetAll()
         {
             List<Song> data = _db.SongsModel.ToList();
-            return data;
+
+            return Mapper.Map(data, new List<SongDomainModel>());
         }
 
-        public Song Get(Guid id)
+        public SongDomainModel Get(Guid id)
         {
             if (id == null)
             {
@@ -32,26 +35,33 @@ namespace mono_lvl3.Repository
                 throw new ArgumentNullException("MODEL is null");
             }
 
-            return data;
+            return Mapper.Map(data, new SongDomainModel());
         }
 
-        public void Add(Song song)
+        public void Add(SongDomainModel songDM)
         {
-            if (song == null)
+            if (songDM == null)
             {
                 throw new ArgumentNullException("SONG is null");
             }
+
+            Song song = new Song();
+
+            song = Mapper.Map(songDM, song);
 
             _db.SongsModel.Add(song);
             _db.SaveChanges();
         }
 
-        public void Update(Song song)
+        public void Update(SongDomainModel songDM)
         {
-            if (song == null)
+            if (songDM == null)
             {
                 throw new ArgumentNullException("SONG is null");
             }
+
+            Song song = new Song();
+            song = Mapper.Map(songDM, song);
 
             _db.SongsModel.AddOrUpdate(song);
             _db.SaveChanges();
