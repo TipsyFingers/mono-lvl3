@@ -7,7 +7,7 @@ namespace mono_lvl3.Models.DomainModels
     {
         public AlbumDomainModel()
         {
-            new AlbumDomainModel();
+            
         }
 
         public Guid Id { get; set; }

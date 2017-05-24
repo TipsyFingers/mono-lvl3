@@ -10,9 +10,15 @@ using AutoMapper;
 
 namespace mono_lvl3.Repository
 {
-    class SongRepository : ISongRepository
+    public abstract class SongRepository : ISongRepository
     {
         private DataContext _db = new DataContext();
+        readonly ISongRepository songRepository;
+
+        public SongRepository(ISongRepository songRepository)
+        {
+            this.songRepository = songRepository;
+        }
 
         public IEnumerable<SongDomainModel> GetAll()
         {

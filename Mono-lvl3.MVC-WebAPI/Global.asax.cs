@@ -22,6 +22,7 @@ namespace Mono_lvl3.MVC_WebAPI
             Mapper.Initialize(cfg =>
             {
                 cfg.AddProfile<RepositoryMappingProfile>();
+                //cfg.AddProfile<ServiceMappingProfile>();
             });
         }
     }
