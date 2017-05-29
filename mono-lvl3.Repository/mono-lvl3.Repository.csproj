@@ -65,11 +65,16 @@
     <Compile Include="Repositories\AlbumRepository.cs" />
     <Compile Include="Repositories\ArtistRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\GenericRepository.cs" />
     <Compile Include="Repositories\SongRepository.cs" />
     <Compile Include="Repositories\UnitOfWork.cs" />
     <Compile Include="RepositoryMappingProfile.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\mono-lvl3.Common\mono-lvl3.Common.csproj">
+      <Project>{8060a515-6a85-42db-98e3-03ea75f874b0}</Project>
+      <Name>mono-lvl3.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\mono-lvl3.DAL\mono-lvl3.DAL.csproj">
       <Project>{2905fa31-7b5c-4428-8645-c01277a8e06d}</Project>
       <Name>mono-lvl3.DAL</Name>

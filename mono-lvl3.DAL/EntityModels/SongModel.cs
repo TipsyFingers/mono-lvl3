@@ -7,7 +7,7 @@ namespace mono_lvl3.DAL.EntityModels
     {
         public Song()
         {
-            new Song();
+            Id = Guid.NewGuid();
         }
 
         public Guid Id { get; set; }
@@ -16,6 +16,7 @@ namespace mono_lvl3.DAL.EntityModels
         public string Genre { get; set; }
         public Guid AlbumId { get; set; }
 
+        public virtual Album Album { get; set; }
         public virtual ICollection<Artist> Artists { get; set; }
     }
 }

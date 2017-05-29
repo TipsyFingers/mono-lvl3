@@ -7,7 +7,7 @@ namespace mono_lvl3.DAL.EntityModels
     {
         public Album()
         {
-            new Album();
+            Id = Guid.NewGuid();
         }
 
         public Guid Id { get; set; }

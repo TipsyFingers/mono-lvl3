@@ -1,9 +1,7 @@
 namespace mono_lvl3.DAL.DbContext
 {
     using EntityModels;
-    using System;
     using System.Data.Entity;
-    using System.Linq;
 
 
     public class DataContext : DbContext

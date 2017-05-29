@@ -7,7 +7,7 @@ namespace mono_lvl3.DAL.EntityModels
     {
         public Artist()
         {
-            new Artist();
+            Id = Guid.NewGuid();
         }
 
         public Guid Id { get; set; }
