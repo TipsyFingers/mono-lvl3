@@ -11,7 +11,7 @@ namespace mono_lvl3.Repository.Repositories
 {
     public class UnitOfWork : IUnitOfWork
     {
-        protected DataContext DbContext { get; private set; }
+        protected DataContext DbContext { get; set; }
 
         public UnitOfWork(DataContext dbContext)
         {
@@ -25,18 +25,25 @@ namespace mono_lvl3.Repository.Repositories
 
         public virtual Task<int> AddAsync<T>(T entity) where T : class
         {
-            DbEntityEntry dbEntityEntry = DbContext.Entry(entity);
-
-            if (dbEntityEntry.State != EntityState.Detached)
+            try
             {
-                dbEntityEntry.State = EntityState.Added;
-            }
-            else
-            {
-                DbContext.Set<T>().Add(entity);
-            }
+                DbEntityEntry dbEntityEntry = DbContext.Entry(entity);
 
-            return Task.FromResult(1);
+                if (dbEntityEntry.State != EntityState.Detached)
+                {
+                    dbEntityEntry.State = EntityState.Added;
+                }
+                else
+                {
+                    DbContext.Set<T>().Add(entity);
+                }
+
+                return Task.FromResult(1);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public virtual Task<int> UpdateAsync<T>(T entity) where T : class
@@ -82,12 +89,12 @@ namespace mono_lvl3.Repository.Repositories
 
         public virtual Task<int> DeleteAsync<T>(Guid id) where T : class
         {
-            var entity = DbContext.Set<T>().Find(id);
-            if (entity == null)
-            {
-                return Task.FromResult(0);
-            }
-            return DeleteAsync<T>(entity);
+                var entity = DbContext.Set<T>().Find(id);
+                if (entity == null)
+                {
+                    return Task.FromResult(0);
+                }
+                return DeleteAsync<T>(entity);
         }
 
         public async Task<int> CommitAsync()

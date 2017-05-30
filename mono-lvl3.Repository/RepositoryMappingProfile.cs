@@ -8,9 +8,9 @@ namespace mono_lvl3.Repository
     {
         public RepositoryMappingProfile()
         {
-            CreateMap<Album, AlbumDomainModel>().ReverseMap();
-            CreateMap<Artist, ArtistDomainModel>().ReverseMap();
-            CreateMap<Song, SongDomainModel>().ReverseMap();
+            CreateMap<Album, AlbumPOCO>().ReverseMap();
+            CreateMap<Artist, ArtistPOCO>().ReverseMap();
+            CreateMap<Song, SongPOCO>().ReverseMap();
         }
     }
 }

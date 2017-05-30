@@ -55,8 +55,9 @@
     <Compile Include="IAlbumRepository.cs" />
     <Compile Include="IArtistRepository.cs" />
     <Compile Include="IGenericRepository.cs" />
-    <Compile Include="ISongRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />
+    <Compile Include="ISongRepository.cs" />
+    <Compile Include="IUnitOfWorkFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

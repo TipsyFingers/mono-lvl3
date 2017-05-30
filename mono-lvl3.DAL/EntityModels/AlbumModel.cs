@@ -5,11 +5,6 @@ namespace mono_lvl3.DAL.EntityModels
 {
     public class Album
     {
-        public Album()
-        {
-            Id = Guid.NewGuid();
-        }
-
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string Genre { get; set; }

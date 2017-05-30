@@ -61,7 +61,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IDataContext.cs" />
+    <Compile Include="Filters\Filter.cs" />
+    <Compile Include="Filters\IFilter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -5,11 +5,6 @@ namespace mono_lvl3.DAL.EntityModels
 {
     public class Song
     {
-        public Song()
-        {
-            Id = Guid.NewGuid();
-        }
-
         public Guid Id { get; set; }
         public string Name { get; set; }
         public decimal Duration { get; set; }
