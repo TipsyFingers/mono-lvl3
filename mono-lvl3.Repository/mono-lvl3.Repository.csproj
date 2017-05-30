@@ -68,7 +68,6 @@
     <Compile Include="Repositories\GenericRepository.cs" />
     <Compile Include="Repositories\SongRepository.cs" />
     <Compile Include="Repositories\UnitOfWork.cs" />
-    <Compile Include="RepositoryMappingProfile.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\mono-lvl3.Common\mono-lvl3.Common.csproj">
