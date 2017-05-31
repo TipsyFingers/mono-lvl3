@@ -1,11 +1,12 @@
 namespace mono_lvl3.DAL.DbContext
 {
     using EntityModels;
+    using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     using System.Threading.Tasks;
 
-    public class DataContext : DbContext
+    public class DataContext : DbContext, IDataContext
     {
         public DataContext() : base("name=mono-lvl3") { }
 
@@ -15,7 +16,7 @@ namespace mono_lvl3.DAL.DbContext
     }
 
 
-    public interface IDataContext
+    public interface IDataContext : IDisposable
     {
         DbSet<Artist> ArtistsModel { get; set; }
         DbSet<Album> AlbumsModel { get; set; }

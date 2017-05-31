@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using mono_lvl3.Models.Common;
+using mono_lvl3.Model.Common;
 
-namespace mono_lvl3.Models.DomainModels
+namespace mono_lvl3.Model.DomainModels
 {
     public class ArtistPOCO : IArtist
     {

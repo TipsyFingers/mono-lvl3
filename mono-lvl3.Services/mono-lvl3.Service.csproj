@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{217B4791-6DA1-4238-BD67-0493299EF43D}</ProjectGuid>
+    <ProjectGuid>{B1D160C8-FB7B-4C9E-A95D-90C5CB771A8A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>mono_lvl3.Services.Common</RootNamespace>
-    <AssemblyName>mono_lvl3.Services.Common</AssemblyName>
+    <RootNamespace>mono_lvl3.Services</RootNamespace>
+    <AssemblyName>mono-lvl3.Services</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,7 +44,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlbumService.cs" />
+    <Compile Include="ArtistService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SongService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\mono-lvl3.Common\mono-lvl3.Common.csproj">
+      <Project>{8060A515-6A85-42DB-98E3-03EA75F874B0}</Project>
+      <Name>mono-lvl3.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\mono-lvl3.Models.Common\mono-lvl3.Models.Common.csproj">
+      <Project>{24B162D5-7F57-4A26-8EF9-EC423E558CA2}</Project>
+      <Name>mono-lvl3.Models.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\mono-lvl3.Repository.Common\mono-lvl3.Repository.Common.csproj">
+      <Project>{1470C2B0-158A-42F6-8FDE-F94AD13EE5E3}</Project>
+      <Name>mono-lvl3.Repository.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\mono_lvl3.Services.Common\mono_lvl3.Service.Common.csproj">
+      <Project>{217B4791-6DA1-4238-BD67-0493299EF43D}</Project>
+      <Name>mono_lvl3.Service.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

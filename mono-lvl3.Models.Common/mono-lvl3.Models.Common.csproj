@@ -45,6 +45,12 @@
     <Compile Include="ISong.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\mono-lvl3.Common\mono-lvl3.Common.csproj">
+      <Project>{8060a515-6a85-42db-98e3-03ea75f874b0}</Project>
+      <Name>mono-lvl3.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

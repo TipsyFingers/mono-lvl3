@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 using mono_lvl3.Common.Filters;
 using mono_lvl3.DAL.EntityModels;
-using mono_lvl3.Models.DomainModels;
-using mono_lvl3.Models.Common;
+using mono_lvl3.Model.DomainModels;
+using mono_lvl3.Model.Common;
 using mono_lvl3.Repository.Common;
 using AutoMapper;
 
@@ -31,12 +31,12 @@ namespace mono_lvl3.Repository
 
         #region Methods
 
-        public virtual async Task<IEnumerable<ArtistPOCO>> GetAsync(IFilter filter = null)
+        public virtual async Task<IEnumerable<IArtist>> GetAsync(IFilter filter = null)
         {
             if (filter != null)
             {
-                var artists = Mapper.Map<IEnumerable<ArtistPOCO>>(
-                    await Repository.GetWhere<Artist>()
+                var artists = Mapper.Map<IEnumerable<IArtist>>(
+                    await Repository.GetWhere<IArtist>()
                     .OrderBy(a => a.LName)
                     .ToListAsync());
 
@@ -51,23 +51,23 @@ namespace mono_lvl3.Repository
             }
             else
             {
-                return Mapper.Map<IEnumerable<ArtistPOCO>>(await Repository.GetWhere<Artist>().ToListAsync());
+                return Mapper.Map<IEnumerable<IArtist>>(await Repository.GetWhere<IArtist>().ToListAsync());
             }
         }
 
         public virtual async Task<IArtist> GetByIDAsync(Guid id)
         {
-            return Mapper.Map<ArtistPOCO>(await Repository.GetWhere<Artist>().Where(a => a.Id == id).FirstOrDefaultAsync());
+            return Mapper.Map<IArtist>(await Repository.GetWhere<IArtist>().Where(a => a.Id == id).FirstOrDefaultAsync());
         }
 
         public virtual Task<int> AddAsync(IArtist artist)
         {
-            return Repository.AddAsync<Artist>(Mapper.Map<Artist>(artist));
+            return Repository.AddAsync<IArtist>(Mapper.Map<IArtist>(artist));
         }
 
         public virtual Task<int> UpdateAsync(IArtist artist)
         {
-            return Repository.UpdateAsync<Artist>(Mapper.Map<Artist>(artist));
+            return Repository.UpdateAsync<IArtist>(Mapper.Map<IArtist>(artist));
         }
 
         public virtual Task<int> DeleteAsync(Guid id)

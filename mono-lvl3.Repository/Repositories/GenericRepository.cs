@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using mono_lvl3.Repository.Common;
 using mono_lvl3.DAL.DbContext;
 
-namespace mono_lvl3.Repository.Repositories
+namespace mono_lvl3.Repository
 {
     public abstract class GenericRepository : IGenericRepository
     {

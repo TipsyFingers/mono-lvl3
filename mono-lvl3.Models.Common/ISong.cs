@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace mono_lvl3.Models.Common
+namespace mono_lvl3.Model.Common
 {
     public interface ISong
     {

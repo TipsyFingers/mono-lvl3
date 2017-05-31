@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using mono_lvl3.DAL.EntityModels;
-using mono_lvl3.Models.Common;
-using mono_lvl3.Models.DomainModels;
+using mono_lvl3.Model.Common;
+using mono_lvl3.Model.DomainModels;
 
-namespace mono_lvl3.Models
+namespace mono_lvl3.Model
 {
     public class ModelsMappingProfile : Profile
     {

@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 using mono_lvl3.Common.Filters;
 using mono_lvl3.DAL.EntityModels;
-using mono_lvl3.Models.DomainModels;
-using mono_lvl3.Models.Common;
+using mono_lvl3.Model.DomainModels;
+using mono_lvl3.Model.Common;
 using mono_lvl3.Repository.Common;
 using AutoMapper;
 
@@ -31,7 +31,7 @@ namespace mono_lvl3.Repository
 
         #region Methods
 
-        public virtual async Task<IEnumerable<SongPOCO>> GetAsync(IFilter filter = null)
+        public virtual async Task<IEnumerable<ISong>> GetAsync(IFilter filter = null)
         {
             if (filter != null)
             {

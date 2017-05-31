@@ -7,7 +7,7 @@ using System.Transactions;
 using mono_lvl3.Repository.Common;
 using mono_lvl3.Common;
 
-namespace mono_lvl3.Repository.Repositories
+namespace mono_lvl3.Repository
 {
     public class UnitOfWork : IUnitOfWork
     {

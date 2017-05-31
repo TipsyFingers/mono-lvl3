@@ -1,18 +1,23 @@
 ﻿using mono_lvl3.Common.Filters;
 using mono_lvl3.Model.Common;
-using mono_lvl3.Model.DomainModels;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
-namespace mono_lvl3.Repository.Common
+namespace mono_lvl3.Service.Common
 {
-    public interface ISongRepository
+    public interface ISongService
     {
+        #region Methods
+
         Task<IEnumerable<ISong>> GetAsync(IFilter filter = null);
         Task<ISong> GetByIDAsync(Guid id);
         Task<int> AddAsync(ISong song);
         Task<int> UpdateAsync(ISong song);
         Task<int> DeleteAsync(Guid id);
+
+        #endregion Methods
     }
 }

@@ -11,15 +11,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mono-lvl3.Repository", "mon
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mono-lvl3.Repository.Common", "mono-lvl3.Repository.Common\mono-lvl3.Repository.Common.csproj", "{1470C2B0-158A-42F6-8FDE-F94AD13EE5E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mono-lvl3.Models", "mono-lvl3.Models\mono-lvl3.Models.csproj", "{4A540BB2-477D-4BFD-91BE-5B56617FA71A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mono-lvl3.Model", "mono-lvl3.Models\mono-lvl3.Model.csproj", "{4A540BB2-477D-4BFD-91BE-5B56617FA71A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mono-lvl3.Models.Common", "mono-lvl3.Models.Common\mono-lvl3.Models.Common.csproj", "{24B162D5-7F57-4A26-8EF9-EC423E558CA2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mono-lvl3.WebAPI", "mono-lvl3.WebAPI\mono-lvl3.WebAPI.csproj", "{B389D373-F322-45BF-AAE1-07C5FF9DAD9B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mono-lvl3.Services", "mono-lvl3.Services\mono-lvl3.Services.csproj", "{B1D160C8-FB7B-4C9E-A95D-90C5CB771A8A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mono-lvl3.Service", "mono-lvl3.Services\mono-lvl3.Service.csproj", "{B1D160C8-FB7B-4C9E-A95D-90C5CB771A8A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mono_lvl3.Services.Common", "mono_lvl3.Services.Common\mono_lvl3.Services.Common.csproj", "{217B4791-6DA1-4238-BD67-0493299EF43D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mono_lvl3.Service.Common", "mono_lvl3.Services.Common\mono_lvl3.Service.Common.csproj", "{217B4791-6DA1-4238-BD67-0493299EF43D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
