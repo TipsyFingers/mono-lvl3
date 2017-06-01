@@ -204,9 +204,9 @@
       <Project>{8060a515-6a85-42db-98e3-03ea75f874b0}</Project>
       <Name>mono-lvl3.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\mono-lvl3.Models.Common\mono-lvl3.Models.Common.csproj">
+    <ProjectReference Include="..\mono-lvl3.Models.Common\mono-lvl3.Model.Common.csproj">
       <Project>{24b162d5-7f57-4a26-8ef9-ec423e558ca2}</Project>
-      <Name>mono-lvl3.Models.Common</Name>
+      <Name>mono-lvl3.Model.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\mono-lvl3.Models\mono-lvl3.Model.csproj">
       <Project>{4a540bb2-477d-4bfd-91be-5b56617fa71a}</Project>
@@ -219,14 +219,6 @@
     <ProjectReference Include="..\mono-lvl3.Repository\mono-lvl3.Repository.csproj">
       <Project>{ffeaf278-26fd-48bb-95ac-8fe64768bbdc}</Project>
       <Name>mono-lvl3.Repository</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\mono-lvl3.Service.Common\mono-lvl3.Service.Common.csproj">
-      <Project>{b36d8b14-af65-48e8-908d-c7c688769d27}</Project>
-      <Name>mono-lvl3.Service.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\mono-lvl3.Services\mono-lvl3.Service.csproj">
-      <Project>{b1d160c8-fb7b-4c9e-a95d-90c5cb771a8a}</Project>
-      <Name>mono-lvl3.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

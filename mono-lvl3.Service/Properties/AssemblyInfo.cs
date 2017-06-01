@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("mono-lvl3.Services")]
+[assembly: AssemblyTitle("mono-lvl3.Service")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("mono-lvl3.Services")]
+[assembly: AssemblyProduct("mono-lvl3.Service")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("b1d160c8-fb7b-4c9e-a95d-90c5cb771a8a")]
+[assembly: Guid("8d93fcf0-3112-40f9-9481-0863f559e092")]
 
 // Version information for an assembly consists of the following four values:
 //

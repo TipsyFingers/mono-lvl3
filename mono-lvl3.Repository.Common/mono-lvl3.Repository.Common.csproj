@@ -65,9 +65,9 @@
       <Project>{2905FA31-7B5C-4428-8645-C01277A8E06D}</Project>
       <Name>mono-lvl3.DAL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\mono-lvl3.Models.Common\mono-lvl3.Models.Common.csproj">
+    <ProjectReference Include="..\mono-lvl3.Models.Common\mono-lvl3.Model.Common.csproj">
       <Project>{24B162D5-7F57-4A26-8EF9-EC423E558CA2}</Project>
-      <Name>mono-lvl3.Models.Common</Name>
+      <Name>mono-lvl3.Model.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\mono-lvl3.Models\mono-lvl3.Model.csproj">
       <Project>{4A540BB2-477D-4BFD-91BE-5B56617FA71A}</Project>

@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B36D8B14-AF65-48E8-908D-C7C688769D27}</ProjectGuid>
+    <ProjectGuid>{A7573DD5-F53C-4199-8935-9A7C398D08DB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>mono_lvl3.Service.Common</RootNamespace>
@@ -50,9 +50,9 @@
       <Project>{8060a515-6a85-42db-98e3-03ea75f874b0}</Project>
       <Name>mono-lvl3.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\mono-lvl3.Models.Common\mono-lvl3.Models.Common.csproj">
+    <ProjectReference Include="..\mono-lvl3.Models.Common\mono-lvl3.Model.Common.csproj">
       <Project>{24b162d5-7f57-4a26-8ef9-ec423e558ca2}</Project>
-      <Name>mono-lvl3.Models.Common</Name>
+      <Name>mono-lvl3.Model.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
