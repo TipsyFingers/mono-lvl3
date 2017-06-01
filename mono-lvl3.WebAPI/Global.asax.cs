@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using AutoMapper;
+using mono_lvl3.Model.Mapping;
 
 namespace mono_lvl3.WebAPI
 {
@@ -13,6 +15,7 @@ namespace mono_lvl3.WebAPI
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            Mapper.Initialize(cfg => cfg.AddProfile<ModelMappingProfile>());
         }
     }
 }

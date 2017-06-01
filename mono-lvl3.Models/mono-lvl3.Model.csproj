@@ -69,7 +69,7 @@
     <Compile Include="DomainModels\AlbumPOCO.cs" />
     <Compile Include="DomainModels\ArtistPOCO.cs" />
     <Compile Include="DomainModels\SongPOCO.cs" />
-    <Compile Include="ModelsMappingProfile.cs" />
+    <Compile Include="Mapping\ModelMappingProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

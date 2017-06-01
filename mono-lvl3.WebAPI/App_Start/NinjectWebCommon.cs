@@ -10,6 +10,8 @@ namespace mono_lvl3.WebAPI.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
+    using System.Collections.Generic;
+    using Ninject.Modules;
 
     public static class NinjectWebCommon 
     {
@@ -61,6 +63,13 @@ namespace mono_lvl3.WebAPI.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            var modules = new List<NinjectModule>
+            {              
+                new Model.DIModule(),
+                new Service.DIModule(),
+                new Repository.DIModule()
+            };
+            kernel.Load(modules);
         }        
     }
 }

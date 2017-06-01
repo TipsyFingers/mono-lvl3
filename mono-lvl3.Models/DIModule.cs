@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Ninject;
+﻿using System.Data.Entity;
 using mono_lvl3.DAL.DbContext;
 using mono_lvl3.Model.Common;
 using mono_lvl3.Model.DomainModels;
-using System.Data.Entity;
+using Ninject.Modules;
 
 namespace mono_lvl3.Model
 {
-    public class DIModule : Ninject.Modules.NinjectModule
+    public class DIModule : NinjectModule
     {
         public override void Load()
         {

@@ -20,7 +20,7 @@ namespace mono_lvl3.Common.Filters
 
         #region Variables
 
-        public int DefaultPageSize = 15;
+        public int DefaultPageSize = 5;
 
         #endregion Variables
 

@@ -7,7 +7,7 @@ using mono_lvl3.Repository.Common;
 using mono_lvl3.Service.Common;
 
 
-namespace mono_lvl3.Services
+namespace mono_lvl3.Service
 {
     public class AlbumService : IAlbumService
     {

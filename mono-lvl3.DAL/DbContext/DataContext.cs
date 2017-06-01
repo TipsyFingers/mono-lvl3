@@ -1,6 +1,7 @@
 namespace mono_lvl3.DAL.DbContext
 {
     using EntityModels;
+    using Mapping;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
@@ -13,6 +14,14 @@ namespace mono_lvl3.DAL.DbContext
         public virtual DbSet<Artist> ArtistsModel { get; set; }
         public virtual DbSet<Album> AlbumsModel { get; set; }
         public virtual DbSet<Song> SongsModel { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Configurations.Add(new ArtistMap());
+            modelBuilder.Configurations.Add(new AlbumMap());
+            modelBuilder.Configurations.Add(new SongMap());
+            base.OnModelCreating(modelBuilder);
+        }
     }
 
 

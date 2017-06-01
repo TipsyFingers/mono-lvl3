@@ -9,7 +9,7 @@ using mono_lvl3.DAL.DbContext;
 
 namespace mono_lvl3.Repository
 {
-    public abstract class GenericRepository : IGenericRepository
+    public class GenericRepository : IGenericRepository
     {
         #region Properties
 

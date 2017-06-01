@@ -46,10 +46,12 @@
   <ItemGroup>
     <Compile Include="AlbumService.cs" />
     <Compile Include="ArtistService.cs" />
+    <Compile Include="DIModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SongService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -65,9 +67,9 @@
       <Project>{1470C2B0-158A-42F6-8FDE-F94AD13EE5E3}</Project>
       <Name>mono-lvl3.Repository.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\mono_lvl3.Services.Common\mono_lvl3.Service.Common.csproj">
-      <Project>{217B4791-6DA1-4238-BD67-0493299EF43D}</Project>
-      <Name>mono_lvl3.Service.Common</Name>
+    <ProjectReference Include="..\mono-lvl3.Service.Common\mono-lvl3.Service.Common.csproj">
+      <Project>{b36d8b14-af65-48e8-908d-c7c688769d27}</Project>
+      <Name>mono-lvl3.Service.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

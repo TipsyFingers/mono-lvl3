@@ -13,6 +13,7 @@ namespace mono_lvl3.Service.Common
         #region Methods
 
         Task<IEnumerable<IArtist>> GetAsync(IFilter filter = null);
+        Task<IArtist> GetByIDAsync(Guid id);
         Task<int> AddAsync(IArtist artist);
         Task<int> UpdateAsync(IArtist artist);
         Task<int> DeleteAsync(Guid id);
