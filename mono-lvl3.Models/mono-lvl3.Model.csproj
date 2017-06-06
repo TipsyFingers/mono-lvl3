@@ -78,7 +78,7 @@
       <Name>mono-lvl3.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\mono-lvl3.DAL\mono-lvl3.DAL.csproj">
-      <Project>{2905FA31-7B5C-4428-8645-C01277A8E06D}</Project>
+      <Project>{2905fa31-7b5c-4428-8645-c01277a8e06d}</Project>
       <Name>mono-lvl3.DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\mono-lvl3.Models.Common\mono-lvl3.Model.Common.csproj">

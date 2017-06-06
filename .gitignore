@@ -3,3 +3,24 @@
 ################################################################################
 
 /mono-lvl3.Common/bin/Debug
+/mono-lvl3.Common/obj/Debug
+/.vs
+/mono-lvl3.DAL/bin
+/mono-lvl3.DAL/obj/Debug
+/mono-lvl3.Models/bin/Debug
+/mono-lvl3.Models/obj/Debug
+/mono-lvl3.Models.Common/bin/Debug
+/mono-lvl3.Models.Common/obj/Debug
+/mono-lvl3.Repository/bin/Debug
+/mono-lvl3.Repository/obj/Debug
+/mono-lvl3.Repository.Common/bin/Debug
+/mono-lvl3.Repository.Common/obj/Debug
+/mono-lvl3.Repository.Tests/obj/Debug
+/mono-lvl3.Service/bin/Debug
+/mono-lvl3.Service/obj/Debug
+/mono-lvl3.Service.Common/bin/Debug
+/mono-lvl3.Service.Common/obj/Debug
+/mono-lvl3.Service.Tests/obj/Debug
+/mono-lvl3.WebAPI/bin
+/mono-lvl3.WebAPI/obj/Debug
+/packages

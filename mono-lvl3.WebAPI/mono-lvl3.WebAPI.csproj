@@ -172,6 +172,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Mapping\WebMappingProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\AlbumViewModel.cs" />
     <Compile Include="ViewModels\ArtistViewModel.cs" />
@@ -219,6 +220,14 @@
     <ProjectReference Include="..\mono-lvl3.Repository\mono-lvl3.Repository.csproj">
       <Project>{ffeaf278-26fd-48bb-95ac-8fe64768bbdc}</Project>
       <Name>mono-lvl3.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\mono-lvl3.Service.Common\mono-lvl3.Service.Common.csproj">
+      <Project>{a7573dd5-f53c-4199-8935-9a7c398d08db}</Project>
+      <Name>mono-lvl3.Service.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\mono-lvl3.Service\mono-lvl3.Service.csproj">
+      <Project>{8d93fcf0-3112-40f9-9481-0863f559e092}</Project>
+      <Name>mono-lvl3.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -17,10 +17,7 @@ namespace mono_lvl3.DAL.DbContext
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Configurations.Add(new ArtistMap());
-            modelBuilder.Configurations.Add(new AlbumMap());
-            modelBuilder.Configurations.Add(new SongMap());
-            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Artist>().ToTable("Artists");
         }
     }
 
