@@ -50,9 +50,6 @@ namespace mono_lvl3.WebAPI.App_Start
             {
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
-                //kernel.Load(AppDomain.CurrentDomain.ReflectionOnlyGetAssemblies());
-
-                Console.WriteLine();
 
                 RegisterServices(kernel);
                 return kernel;
