@@ -12,6 +12,7 @@ namespace mono_lvl3.WebAPI.App_Start
     using Ninject.Web.Common;
     using System.Collections.Generic;
     using Ninject.Modules;
+    using System.Linq;
 
     public static class NinjectWebCommon 
     {
@@ -41,11 +42,17 @@ namespace mono_lvl3.WebAPI.App_Start
         /// <returns>The created kernel.</returns>
         private static IKernel CreateKernel()
         {
-            var kernel = new StandardKernel();
+            var settings = new NinjectSettings();
+            settings.LoadExtensions = true;
+            settings.ExtensionSearchPatterns = settings.ExtensionSearchPatterns.Union(new string[] { "mono-lvl3.*.dll" }).ToArray();
+            var kernel = new StandardKernel(settings);
             try
             {
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
+                //kernel.Load(AppDomain.CurrentDomain.ReflectionOnlyGetAssemblies());
+
+                Console.WriteLine();
 
                 RegisterServices(kernel);
                 return kernel;
@@ -63,13 +70,13 @@ namespace mono_lvl3.WebAPI.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            var modules = new List<NinjectModule>
-            {              
-                new Model.DIModule(),
-                new Service.DIModule(),
-                new Repository.DIModule()
-            };
-            kernel.Load(modules);
+            //var modules = new List<NinjectModule>
+            //{
+            //    new Model.DIModule(),
+            //    new Service.DIModule(),
+            //    new Repository.DIModule()
+            //};
+            //kernel.Load(modules);
         }        
     }
 }
