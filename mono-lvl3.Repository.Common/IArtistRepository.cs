@@ -11,7 +11,7 @@ namespace mono_lvl3.Repository.Common
     {
         Task<IEnumerable<IArtist>> GetAsync(IFilter filter = null);
         Task<IArtist> GetByIDAsync(Guid id);
-        Task<int> AddAsync(IUnitOfWork unitOfWork, IArtist artist);
+        Task<int> AddAsync(IArtist artist);
         Task<int> UpdateAsync(IArtist artist);
         Task<int> DeleteAsync(Guid id);
         Task<IUnitOfWork> CreateUnitOfWork();

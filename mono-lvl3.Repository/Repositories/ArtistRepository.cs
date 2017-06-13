@@ -60,22 +60,19 @@ namespace mono_lvl3.Repository
             return Mapper.Map<IArtist>(await Repository.GetWhere<Artist>().Where(a => a.Id == id).SingleOrDefaultAsync());
         }
 
-        public virtual Task<int> AddAsync(IUnitOfWork unitOfWork, IArtist artist)
+        public virtual Task<int> AddAsync(IArtist artist)
         {
-            return unitOfWork.AddAsync<Artist>(Mapper.Map<Artist>(artist));
-            //return Repository.AddAsync<Artist>(Mapper.Map<Artist>(artist));
+            return Repository.AddAsync<Artist>(Mapper.Map<Artist>(artist));
         }
 
         public virtual Task<int> UpdateAsync(IArtist artist)
         {
             return Repository.UpdateAsync<Artist>(Mapper.Map<Artist>(artist));
-            //return Repository.UpdateAsync<Artist>(Mapper.Map<Artist>(artist));
         }
 
         public virtual Task<int> DeleteAsync(Guid id)
         {
             return Repository.DeleteAsync<Artist>(id);
-            //return Repository.DeleteAsync<Artist>(id);
         }
 
         public Task<IUnitOfWork> CreateUnitOfWork()
