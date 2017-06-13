@@ -46,21 +46,29 @@ namespace mono_lvl3.Repository
 
         public virtual Task<T> GetByIDAsync<T>(Guid id) where T : class
         {
-            return DbContext.Set<T>().FindAsync();
+            return DbContext.Set<T>().SingleOrDefaultAsync();
         }
 
         public virtual async Task<int> AddAsync<T>(T entity) where T : class
         {
-            DbEntityEntry dbEntityEntry = DbContext.Entry(entity);
-            if (dbEntityEntry.State != EntityState.Detached)
+            try
             {
-                dbEntityEntry.State = EntityState.Added;
+                DbEntityEntry dbEntityEntry = DbContext.Entry(entity);
+                if (dbEntityEntry.State != EntityState.Detached)
+                {
+                    dbEntityEntry.State = EntityState.Added;
+                }
+                else
+                {
+                    DbContext.Set<T>().Add(entity);
+                }
+                return await DbContext.SaveChangesAsync();
             }
-            else
+            catch ( Exception e)
             {
-                DbContext.Set<T>().Add(entity);
+                throw e;
             }
-            return await DbContext.SaveChangesAsync();
+            
         }
 
         public virtual async Task<int> UpdateAsync<T>(T entity) where T : class

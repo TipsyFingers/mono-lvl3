@@ -30,29 +30,38 @@ namespace mono_lvl3.Service
 
         #region Methods
 
-        public Task<int> AddAsync(IAlbum album)
+        public async Task<IEnumerable<IAlbum>> GetAsync(IFilter filter = null)
         {
-            return Repository.AddAsync(album);
+            return await Repository.GetAsync(filter);
         }
 
-        public Task<int> DeleteAsync(Guid id)
+        public async Task<IAlbum> GetByIDAsync(Guid id)
         {
-            return Repository.DeleteAsync(id);
+            return await Repository.GetByIDAsync(id);
         }
 
-        public Task<IEnumerable<IAlbum>> GetAsync(IFilter filter = null)
+        public async Task<int> AddAsync(IAlbum album)
         {
-            return Repository.GetAsync(filter);
+            IUnitOfWork unitOfWork = await Repository.CreateUnitOfWork();
+
+            await Repository.AddAsync(unitOfWork, album);
+            return await unitOfWork.CommitAsync();
         }
 
-        public Task<IAlbum> GetByIDAsync(Guid id)
+        public async Task<int> UpdateAsync(IAlbum album)
         {
-            return Repository.GetByIDAsync(id);
+            IUnitOfWork unitOfWork = await Repository.CreateUnitOfWork();
+
+            await Repository.UpdateAsync(unitOfWork, album);
+            return await unitOfWork.CommitAsync();
         }
 
-        public Task<int> UpdateAsync(IAlbum album)
+        public async Task<int> DeleteAsync(Guid id)
         {
-            return Repository.UpdateAsync(album);
+            IUnitOfWork unitOfWork = await Repository.CreateUnitOfWork();
+
+            await Repository.DeleteAsync(unitOfWork, id);
+            return await unitOfWork.CommitAsync();
         }
 
         #endregion Methods

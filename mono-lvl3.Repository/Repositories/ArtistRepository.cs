@@ -57,22 +57,30 @@ namespace mono_lvl3.Repository
 
         public virtual async Task<IArtist> GetByIDAsync(Guid id)
         {
-            return Mapper.Map<IArtist>(await Repository.GetWhere<IArtist>().Where(a => a.Id == id).FirstOrDefaultAsync());
+            return Mapper.Map<IArtist>(await Repository.GetWhere<Artist>().Where(a => a.Id == id).SingleOrDefaultAsync());
         }
 
-        public virtual Task<int> AddAsync(IArtist artist)
+        public virtual Task<int> AddAsync(IUnitOfWork unitOfWork, IArtist artist)
         {
-            return Repository.AddAsync<IArtist>(Mapper.Map<IArtist>(artist));
+            return unitOfWork.AddAsync<Artist>(Mapper.Map<Artist>(artist));
+            //return Repository.AddAsync<Artist>(Mapper.Map<Artist>(artist));
         }
 
         public virtual Task<int> UpdateAsync(IArtist artist)
         {
-            return Repository.UpdateAsync<IArtist>(Mapper.Map<IArtist>(artist));
+            return Repository.UpdateAsync<Artist>(Mapper.Map<Artist>(artist));
+            //return Repository.UpdateAsync<Artist>(Mapper.Map<Artist>(artist));
         }
 
         public virtual Task<int> DeleteAsync(Guid id)
         {
             return Repository.DeleteAsync<Artist>(id);
+            //return Repository.DeleteAsync<Artist>(id);
+        }
+
+        public Task<IUnitOfWork> CreateUnitOfWork()
+        {
+            return Task.FromResult(Repository.CreateUnitOfWork());
         }
 
         #endregion Methods

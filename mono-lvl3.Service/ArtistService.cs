@@ -29,19 +29,22 @@ namespace mono_lvl3.Service
 
         #region Methods
 
-        public Task<IEnumerable<IArtist>> GetAsync(IFilter filter = null)
+        public async Task<IEnumerable<IArtist>> GetAsync(IFilter filter = null)
         {
-            return Repository.GetAsync(filter);
+            return await Repository.GetAsync(filter);
         }
 
-        public Task<IArtist> GetByIDAsync(Guid id)
+        public async Task<IArtist> GetByIDAsync(Guid id)
         {
-            return Repository.GetByIDAsync(id);
+            return await Repository.GetByIDAsync(id);
         }
 
-        public Task<int> AddAsync(IArtist artist)
+        public async Task<int> AddAsync(IArtist artist)
         {
-            return Repository.AddAsync(artist);
+            IUnitOfWork unitOfWork = await Repository.CreateUnitOfWork();
+
+            await Repository.AddAsync(unitOfWork, artist);
+            return await unitOfWork.CommitAsync();
         }
 
         public Task<int> UpdateAsync(IArtist artist)
@@ -49,9 +52,9 @@ namespace mono_lvl3.Service
             return Repository.UpdateAsync(artist);
         }
 
-        public Task<int> DeleteAsync(Guid id)
+        public async Task<int> DeleteAsync(Guid id)
         {
-            return Repository.DeleteAsync(id);
+            return await Repository.DeleteAsync(id);
         }
 
         #endregion Methods

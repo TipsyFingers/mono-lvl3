@@ -1,11 +1,10 @@
-﻿using mono_lvl3.DAL.DbContext;
-using System;
+﻿using System;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Threading.Tasks;
 using System.Transactions;
 using mono_lvl3.Repository.Common;
-using mono_lvl3.Common;
+using mono_lvl3.DAL.DbContext;
 
 namespace mono_lvl3.Repository
 {
@@ -89,12 +88,12 @@ namespace mono_lvl3.Repository
 
         public virtual Task<int> DeleteAsync<T>(Guid id) where T : class
         {
-                var entity = DbContext.Set<T>().Find(id);
-                if (entity == null)
-                {
-                    return Task.FromResult(0);
-                }
-                return DeleteAsync<T>(entity);
+            var entity = DbContext.Set<T>().Find(id);
+            if (entity == null)
+            {
+                return Task.FromResult(0);
+            }
+            return DeleteAsync<T>(entity);
         }
 
         public async Task<int> CommitAsync()

@@ -60,19 +60,27 @@ namespace mono_lvl3.Repository
             return Mapper.Map<AlbumPOCO>(await Repository.GetWhere<Album>().Where(a => a.Id == id).FirstOrDefaultAsync());
         }
 
-        public virtual Task<int> AddAsync(IAlbum album)
+        public virtual Task<int> AddAsync(IUnitOfWork unitOfWork, IAlbum album)
         {
-            return Repository.AddAsync<Album>(Mapper.Map<Album>(album));
+            return unitOfWork.AddAsync<Album>(Mapper.Map<Album>(album));
+            //return Repository.AddAsync<Album>(Mapper.Map<Album>(album));
         }
 
-        public virtual Task<int> UpdateAsync(IAlbum album)
+        public virtual Task<int> UpdateAsync(IUnitOfWork unitOfWork, IAlbum album)
         {
-            return Repository.UpdateAsync<Album>(Mapper.Map<Album>(album));
+            return unitOfWork.UpdateAsync<Album>(Mapper.Map<Album>(album));
+            //return Repository.UpdateAsync<Album>(Mapper.Map<Album>(album));
         }
 
-        public virtual Task<int> DeleteAsync(Guid id)
+        public virtual Task<int> DeleteAsync(IUnitOfWork unitOfWork, Guid id)
         {
-            return Repository.DeleteAsync<Album>(id);
+            return unitOfWork.DeleteAsync<Album>(id);
+            //return Repository.DeleteAsync<Album>(id);
+        }
+
+        public Task<IUnitOfWork> CreateUnitOfWork()
+        {
+            return Task.FromResult(Repository.CreateUnitOfWork());
         }
 
         #endregion Methods

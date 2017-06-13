@@ -14,18 +14,18 @@ using System.Web.Mvc;
 
 namespace mono_lvl3.WebAPI.Controllers
 {
-    public class ArtistController : Controller
+    public class AlbumController : Controller
     {
         #region Properites
 
-        protected IArtistService Service { get; private set; }
+        protected IAlbumService Service { get; private set; }
 
         #endregion Properties
 
 
         #region Constructors
 
-        public ArtistController(IArtistService service)
+        public AlbumController(IAlbumService service)
         {
             this.Service = service;
         }
@@ -36,25 +36,25 @@ namespace mono_lvl3.WebAPI.Controllers
         #region Methods
 
         /// <summary>
-        /// Gets artists
+        /// Gets albums
         /// </summary>
-        /// <returns>Artists paged list</returns>
+        /// <returns>Albums paged list</returns>
         public async Task<ActionResult> Index(string searchString, int pageNumber = 1, int pageSize = 5)
         {
-            var artists = Mapper.Map<IEnumerable<ArtistViewModel>>(
+            var albums = Mapper.Map<IEnumerable<AlbumViewModel>>(
                 await Service.GetAsync(new Common.Filters.Filter(searchString, pageNumber, pageSize)))
                 .ToPagedList(pageNumber, pageSize);
 
-            var artistPagedList = new StaticPagedList<ArtistViewModel>(artists, artists.GetMetaData());
-            return View(artistPagedList);
+            var albumPagedList = new StaticPagedList<AlbumViewModel>(albums, albums.GetMetaData());
+            return View(albumPagedList);
         }
 
 
         /// <summary>
-        /// Gets artist by ID
+        /// Gets album by ID
         /// </summary>
         /// <param name="id">The identifier.</param>
-        /// <returns>Artist</returns>
+        /// <returns>Album</returns>
         public async Task<ActionResult> Details(Guid id)
         {
             if (id == null)
@@ -62,18 +62,18 @@ namespace mono_lvl3.WebAPI.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            IArtist artist = await Service.GetByIDAsync(id);
+            IAlbum album = await Service.GetByIDAsync(id);
 
-            if (artist == null)
+            if (album == null)
             {
                 return HttpNotFound();
             }
-            return View(Mapper.Map<ArtistViewModel>(artist));
+            return View(Mapper.Map<AlbumViewModel>(album));
         }
 
 
         /// <summary>
-        /// Gets user interface for creating new artist
+        /// Gets user interface for creating new album
         /// </summary>
         /// <returns></returns>
         public ActionResult Create()
@@ -83,19 +83,19 @@ namespace mono_lvl3.WebAPI.Controllers
 
 
         /// <summary>
-        /// Creates new artist
+        /// Creates new album
         /// </summary>
-        /// <param name="artist">The artist.</param>
+        /// <param name="album">The album.</param>
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id, ArtistName, FName, LName, From")] ArtistViewModel artist)
+        public async Task<ActionResult> Create([Bind(Include = "Id, Name, Genre, Price, Relased")] AlbumViewModel album)
         {
-            artist.Id = Guid.NewGuid();
-
+            album.Id = Guid.NewGuid();
+            
             if (ModelState.IsValid)
             {
-                await Service.AddAsync(Mapper.Map<ArtistPOCO>(artist));
+                await Service.AddAsync(Mapper.Map<AlbumPOCO>(album));
                 return RedirectToAction("Index");
             }
 
@@ -104,7 +104,7 @@ namespace mono_lvl3.WebAPI.Controllers
 
 
         /// <summary>
-        /// Gets artist by ID for editing
+        /// Gets album by ID for editing
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
@@ -114,28 +114,28 @@ namespace mono_lvl3.WebAPI.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var artist = await Service.GetByIDAsync(id);
+            var album = await Service.GetByIDAsync(id);
 
-            if (artist == null)
+            if (album == null)
             {
                 return HttpNotFound();
             }
-            return View(Mapper.Map<ArtistViewModel>(artist));
+            return View(Mapper.Map<AlbumViewModel>(album));
         }
 
 
         /// <summary>
-        /// Updates the artist
+        /// Updates the album
         /// </summary>
-        /// <param name="artist">The artist.</param>
-        /// <returns>Artists</returns>
+        /// <param name="album">The album.</param>
+        /// <returns>Albums</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id, ArtistName, FName, LName, From")] ArtistViewModel artist)
+        public async Task<ActionResult> Edit([Bind(Include = "Id, Name, Genre, Price, Relased")] AlbumViewModel album)
         {
             if (ModelState.IsValid)
             {
-                await Service.UpdateAsync(Mapper.Map<ArtistPOCO>(artist));
+                await Service.UpdateAsync(Mapper.Map<AlbumPOCO>(album));
                 return RedirectToAction("Index");
             }
             return View();
@@ -143,23 +143,23 @@ namespace mono_lvl3.WebAPI.Controllers
 
 
         /// <summary>
-        /// Gets artist by ID for deleting.
+        /// Gets album by ID for deleting.
         /// </summary>
         /// <param name="id">The identifier.</param>
-        /// <returns>The artist.</returns>
+        /// <returns>The album.</returns>
         public async Task<ActionResult> Delete(Guid id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            IArtist artist = await Service.GetByIDAsync(id);
+            IAlbum album = await Service.GetByIDAsync(id);
 
-            if (artist == null)
+            if (album == null)
             {
                 return HttpNotFound();
             }
-            return View(Mapper.Map<ArtistViewModel>(artist));
+            return View(Mapper.Map<AlbumViewModel>(album));
         }
 
 

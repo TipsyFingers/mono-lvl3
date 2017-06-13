@@ -18,7 +18,7 @@ namespace mono_lvl3.WebAPI.ViewModels
         [DisplayFormat(DataFormatString = "{0:#.##}")]
         public decimal Duration { get; set; }
 
-        [DisplayName("Ime")]
+        [DisplayName("Žanr")]
         [StringLength(50, ErrorMessage = "Maksimalno dozvoljena dužina je 50 znakova.")]
         public string Genre { get; set; }
 
