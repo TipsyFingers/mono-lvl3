@@ -24,3 +24,5 @@
 /mono-lvl3.WebAPI/bin
 /mono-lvl3.WebAPI/obj/Debug
 /packages
+/mono-lvl3.Service.Tests/bin/Debug
+/mono-lvl3.Repository.Tests/bin/Debug

@@ -11,8 +11,9 @@ namespace mono_lvl3.Repository.Common
     {
         Task<IEnumerable<IAlbum>> GetAsync(IFilter filter = null);
         Task<IAlbum> GetByIDAsync(Guid id);
-        Task<int> AddAsync(IAlbum album);
-        Task<int> UpdateAsync(IAlbum album);
-        Task<int> DeleteAsync(Guid id);
+        Task<int> AddAsync(IUnitOfWork unitOfWork, IAlbum album);
+        Task<int> UpdateAsync(IUnitOfWork unitOfWork, IAlbum album);
+        Task<int> DeleteAsync(IUnitOfWork unitOfWork, Guid id);
+        Task<IUnitOfWork> CreateUnitOfWork();
     }
 }

@@ -18,6 +18,8 @@ namespace mono_lvl3.DAL.DbContext
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Artist>().ToTable("Artists");
+            modelBuilder.Entity<Album>().ToTable("Albums");
+            modelBuilder.Entity<Song>().ToTable("Songs");
         }
     }
 

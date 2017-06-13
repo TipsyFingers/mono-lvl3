@@ -16,7 +16,7 @@ namespace mono_lvl3.WebAPI
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Artist", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
