@@ -125,6 +125,10 @@ namespace mono_lvl3.WebAPI.Controllers
             {
                 return HttpNotFound();
             }
+
+            var albums = Service.GetAlbumsAsync();
+            ViewBag.Albums = albums;
+
             return View(Mapper.Map<SongViewModel>(song));
         }
 

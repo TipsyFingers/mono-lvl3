@@ -14,7 +14,7 @@ namespace mono_lvl3.Model.Common
         string Genre { get; set; }
         Guid AlbumId { get; set; }
 
-        IAlbum Album { get; set; }
+        //IAlbum Album { get; set; }
         ICollection<IArtist> Artists { get; set; }
     }
 }

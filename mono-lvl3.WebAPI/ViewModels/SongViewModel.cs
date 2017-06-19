@@ -28,7 +28,7 @@ namespace mono_lvl3.WebAPI.ViewModels
         /// <summary>
         ///  Navigation properties
         /// </summary>
-        public virtual AlbumViewModel Album { get; set; }
+        //public virtual AlbumViewModel Album { get; set; }
         public virtual ICollection<ArtistViewModel> Artists { get; set; }
     }
 }
