@@ -42,28 +42,38 @@ namespace mono_lvl3.Service
 
         public async Task<int> AddAsync(ISong song)
         {
-            IUnitOfWork unitOfWork = await Repository.CreateUnitOfWork();
-
-            await Repository.AddAsync(song);
-            return await unitOfWork.CommitAsync();
+            return await Repository.AddAsync(song);
         }
 
         public async Task<int> UpdateAsync(ISong song)
         {
-            IUnitOfWork unitOfWork = await Repository.CreateUnitOfWork();
-
-            await Repository.UpdateAsync(song);
-            return await unitOfWork.CommitAsync();
+            return await Repository.UpdateAsync(song);
         }
 
         public async Task<int> DeleteAsync(Guid id)
         {
-            IUnitOfWork unitOfWork = await Repository.CreateUnitOfWork();
-
-            await Repository.DeleteAsync(id);
-            return await unitOfWork.CommitAsync();
+            return await Repository.DeleteAsync(id);
         }
 
+        public async Task<int> DeleteAsync(params Guid[] id)
+        {
+            try
+            {
+                IUnitOfWork unitOfWork = await Repository.CreateUnitOfWork();
+                foreach (Guid i in id)
+                {
+                    await unitOfWork.DeleteAsync<IArtist>(i);
+                }
+                return await unitOfWork.CommitAsync();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+
+        // Za popunjavanje dropdown liste za odabir albuma na kojemu se nalazi pjesma
         public IEnumerable<IAlbum> GetAlbumsAsync()
         {
             return Repository.GetAlbumsAsync();

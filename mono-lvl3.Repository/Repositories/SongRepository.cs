@@ -87,12 +87,13 @@ namespace mono_lvl3.Repository
             return Task.FromResult(Repository.CreateUnitOfWork());
         }
 
+
+        // Za popunjavanje dropdown liste za odabir albuma na kojemu se nalazi pjesma
         public IEnumerable<IAlbum> GetAlbumsAsync()
         {
             var albums = Mapper.Map<IEnumerable<AlbumPOCO>>(Repository.GetWhere<Album>()
                                                                       .OrderBy(a => a.Name)
                                                                       .ToList());
-
             return albums;
         }
 

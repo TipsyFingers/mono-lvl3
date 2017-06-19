@@ -50,21 +50,31 @@ namespace mono_lvl3.Service
 
         public async Task<int> UpdateAsync(IAlbum album)
         {
-            IUnitOfWork unitOfWork = await Repository.CreateUnitOfWork();
-
-            await Repository.UpdateAsync(album);
-            return await unitOfWork.CommitAsync();
+            return await Repository.UpdateAsync(album);
         }
 
         public async Task<int> DeleteAsync(Guid id)
         {
-            IUnitOfWork unitOfWork = await Repository.CreateUnitOfWork();
+            return await Repository.DeleteAsync(id);
+        }
 
-            await Repository.DeleteAsync(id);
-            return await unitOfWork.CommitAsync();
+        public async Task<int> DeleteAsync(params Guid[] id)
+        {
+            try
+            {
+                IUnitOfWork unitOfWork = await Repository.CreateUnitOfWork();
+                foreach (Guid i in id)
+                {
+                    await unitOfWork.DeleteAsync<IArtist>(i);
+                }
+                return await unitOfWork.CommitAsync();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         #endregion Methods
-
     }
 }
