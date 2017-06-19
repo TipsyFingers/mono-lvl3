@@ -43,7 +43,7 @@ namespace mono_lvl3.Service
         {
             IUnitOfWork unitOfWork = await Repository.CreateUnitOfWork();
 
-            await Repository.AddAsync(unitOfWork, artist);
+            await Repository.AddAsync(artist);
             return await unitOfWork.CommitAsync();
         }
 
@@ -58,6 +58,5 @@ namespace mono_lvl3.Service
         }
 
         #endregion Methods
-
     }
 }

@@ -44,7 +44,7 @@ namespace mono_lvl3.Service
         {
             IUnitOfWork unitOfWork = await Repository.CreateUnitOfWork();
 
-            await Repository.AddAsync(unitOfWork, album);
+            await Repository.AddAsync(album);
             return await unitOfWork.CommitAsync();
         }
 
@@ -52,7 +52,7 @@ namespace mono_lvl3.Service
         {
             IUnitOfWork unitOfWork = await Repository.CreateUnitOfWork();
 
-            await Repository.UpdateAsync(unitOfWork, album);
+            await Repository.UpdateAsync(album);
             return await unitOfWork.CommitAsync();
         }
 
@@ -60,7 +60,7 @@ namespace mono_lvl3.Service
         {
             IUnitOfWork unitOfWork = await Repository.CreateUnitOfWork();
 
-            await Repository.DeleteAsync(unitOfWork, id);
+            await Repository.DeleteAsync(id);
             return await unitOfWork.CommitAsync();
         }
 

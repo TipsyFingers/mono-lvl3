@@ -20,7 +20,7 @@ namespace mono_lvl3.DAL.Mapping
             this.Property(t => t.Relased);
 
             // Table and Column mappings
-            this.ToTable("Artist");
+            this.ToTable("Albums");
             this.Property(t => t.Name).HasColumnName("AlbumName").HasColumnType("NVarchar");
             this.Property(t => t.Genre).HasColumnName("Genre").HasColumnType("NVarchar");
             this.Property(t => t.Price).HasColumnName("Price").HasColumnType("Decimal").HasPrecision(18, 2);
@@ -32,6 +32,11 @@ namespace mono_lvl3.DAL.Mapping
             // *-* (Album-Artist)
             this.HasMany(t => t.Artists)
                 .WithMany(t => t.Albums);
+
+            //-----
+            // 1-* (Album-Song)
+            this.HasRequired(t => t.Songs)
+                .WithRequiredPrincipal();
         }
     }
 }

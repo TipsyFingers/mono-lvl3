@@ -20,7 +20,7 @@ namespace mono_lvl3.DAL.Mapping
             this.Property(t => t.From).HasMaxLength(50);
 
             // Table and Column mappings
-            this.ToTable("Artist");
+            this.ToTable("Artists");
             this.Property(t => t.ArtistName).HasColumnName("ArtistName").HasColumnType("NVarchar");
             this.Property(t => t.FName).HasColumnName("FirstName").HasColumnType("NVarchar");
             this.Property(t => t.LName).HasColumnName("LastName").HasColumnType("NVarchar");

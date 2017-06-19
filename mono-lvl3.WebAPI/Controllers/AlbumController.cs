@@ -39,7 +39,7 @@ namespace mono_lvl3.WebAPI.Controllers
         /// Gets albums
         /// </summary>
         /// <returns>Albums paged list</returns>
-        public async Task<ActionResult> Index(string searchString, int pageNumber = 1, int pageSize = 5)
+        public async Task<ActionResult> Index(string searchString, int pageNumber = 1, int pageSize = 10)
         {
             var albums = Mapper.Map<IEnumerable<AlbumViewModel>>(
                 await Service.GetAsync(new Common.Filters.Filter(searchString, pageNumber, pageSize)))

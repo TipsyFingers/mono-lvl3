@@ -46,7 +46,7 @@ namespace mono_lvl3.Repository
 
         public virtual Task<T> GetByIDAsync<T>(Guid id) where T : class
         {
-            return DbContext.Set<T>().SingleOrDefaultAsync();
+            return DbContext.Set<T>().FindAsync(id);
         }
 
         public virtual async Task<int> AddAsync<T>(T entity) where T : class

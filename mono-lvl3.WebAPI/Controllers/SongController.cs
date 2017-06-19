@@ -80,6 +80,9 @@ namespace mono_lvl3.WebAPI.Controllers
         /// <returns></returns>
         public ActionResult Create()
         {
+            var albums = Service.GetAlbumsAsync();
+            ViewBag.Albums = albums;
+
             return View();
         }
 
@@ -91,7 +94,7 @@ namespace mono_lvl3.WebAPI.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id, Name, Duration, Genre, Album")] SongViewModel song)
+        public async Task<ActionResult> Create([Bind(Include = "Id, Name, Duration, Genre, AlbumId")] SongViewModel song)
         {
             song.Id = Guid.NewGuid();
 
@@ -133,7 +136,7 @@ namespace mono_lvl3.WebAPI.Controllers
         /// <returns>Songs</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id, Name, Duration, Genre, Album")] SongViewModel song)
+        public async Task<ActionResult> Edit([Bind(Include = "Id, Name, Duration, Genre, AlbumId")] SongViewModel song)
         {
             if (ModelState.IsValid)
             {

@@ -5,6 +5,7 @@ using mono_lvl3.Common.Filters;
 using mono_lvl3.Model.Common;
 using mono_lvl3.Repository.Common;
 using mono_lvl3.Service.Common;
+using System.Linq;
 
 namespace mono_lvl3.Service
 {
@@ -43,7 +44,7 @@ namespace mono_lvl3.Service
         {
             IUnitOfWork unitOfWork = await Repository.CreateUnitOfWork();
 
-            await Repository.AddAsync(unitOfWork, song);
+            await Repository.AddAsync(song);
             return await unitOfWork.CommitAsync();
         }
 
@@ -51,7 +52,7 @@ namespace mono_lvl3.Service
         {
             IUnitOfWork unitOfWork = await Repository.CreateUnitOfWork();
 
-            await Repository.UpdateAsync(unitOfWork, song);
+            await Repository.UpdateAsync(song);
             return await unitOfWork.CommitAsync();
         }
 
@@ -59,8 +60,13 @@ namespace mono_lvl3.Service
         {
             IUnitOfWork unitOfWork = await Repository.CreateUnitOfWork();
 
-            await Repository.DeleteAsync(unitOfWork, id);
+            await Repository.DeleteAsync(id);
             return await unitOfWork.CommitAsync();
+        }
+
+        public IEnumerable<IAlbum> GetAlbumsAsync()
+        {
+            return Repository.GetAlbumsAsync();
         }
 
         #endregion Methods

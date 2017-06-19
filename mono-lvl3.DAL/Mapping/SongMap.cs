@@ -19,17 +19,20 @@ namespace mono_lvl3.DAL.Mapping
             this.Property(t => t.Genre).HasMaxLength(50);
 
             // Table and Column mappings
-            this.ToTable("Artist");
+            this.ToTable("Songs");
             this.Property(t => t.Name).HasColumnName("SongName").HasColumnType("NVarchar");
             this.Property(t => t.Duration).HasColumnName("SongDuration").HasColumnType("Decimal").HasPrecision(18, 2);
             this.Property(t => t.Genre).HasColumnName("Genre").HasColumnType("NVarchar");
 
+
             // Relationships
 
             // 1-* (Album-Song)
-            this.HasRequired(t => t.Album)
-                .WithMany(t => t.Songs)
-                .HasForeignKey(d => d.Album_Id);
+            //this.HasRequired(t => t.Album)
+            //    .WithMany(t => t.Songs)
+            //    .HasForeignKey(d => d.Album_Id);
+
+            this.HasKey(t => t.AlbumId);
 
             // *-* (Song-Artist)
             this.HasMany(t => t.Artists)

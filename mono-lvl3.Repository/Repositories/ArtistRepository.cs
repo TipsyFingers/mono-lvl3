@@ -33,31 +33,38 @@ namespace mono_lvl3.Repository
 
         public virtual async Task<IEnumerable<IArtist>> GetAsync(IFilter filter = null)
         {
-            if (filter != null)
+            try
             {
-                var artists = Mapper.Map<IEnumerable<ArtistPOCO>>(
-                    await Repository.GetWhere<Artist>()
-                    .OrderBy(a => a.LName)
-                    .ToListAsync());
-
-                if (!string.IsNullOrWhiteSpace(filter.SearchString))
+                if (filter != null)
                 {
-                    artists = artists.Where(a => a.ArtistName.ToUpper()
-                        .Contains(filter.SearchString.ToUpper()))
-                        .ToList();
-                }
+                    var artists = Mapper.Map<IEnumerable<ArtistPOCO>>(
+                        await Repository.GetWhere<Artist>()
+                        .OrderBy(a => a.LName)
+                        .ToListAsync());
 
-                return artists;
+                    if (!string.IsNullOrWhiteSpace(filter.SearchString))
+                    {
+                        artists = artists.Where(a => a.ArtistName.ToUpper()
+                            .Contains(filter.SearchString.ToUpper()))
+                            .ToList();
+                    }
+
+                    return artists;
+                }
+                else
+                {
+                    return Mapper.Map<IEnumerable<IArtist>>(await Repository.GetWhere<IArtist>().ToListAsync());
+                }
             }
-            else
+            catch (Exception e)
             {
-                return Mapper.Map<IEnumerable<IArtist>>(await Repository.GetWhere<IArtist>().ToListAsync());
+                throw e;
             }
         }
 
         public virtual async Task<IArtist> GetByIDAsync(Guid id)
         {
-            return Mapper.Map<IArtist>(await Repository.GetWhere<Artist>().Where(a => a.Id == id).SingleOrDefaultAsync());
+            return Mapper.Map<IArtist>(await Repository.GetWhere<Artist>().Where(a => a.Id == id).FirstOrDefaultAsync());
         }
 
         public virtual Task<int> AddAsync(IArtist artist)

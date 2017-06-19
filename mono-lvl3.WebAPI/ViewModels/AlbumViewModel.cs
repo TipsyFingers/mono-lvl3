@@ -34,22 +34,4 @@ namespace mono_lvl3.WebAPI.ViewModels
         public virtual ICollection<ArtistViewModel> Artists { get; set; }
         public virtual ICollection<SongViewModel> Songs { get; set; }
     }
-
-    public class DateFormatValidation : ValidationAttribute
-    {
-        public override bool IsValid(object value)
-        {
-            DateTime date;
-            var format = "0:dd/MM/yyyy";
-            bool parsed = DateTime.TryParseExact((string)value, format, CultureInfo.InvariantCulture, DateTimeStyles.None, out date);
-            if (!parsed)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-    }
 }

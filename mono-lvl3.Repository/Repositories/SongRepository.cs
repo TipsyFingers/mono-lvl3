@@ -33,25 +33,32 @@ namespace mono_lvl3.Repository
 
         public virtual async Task<IEnumerable<ISong>> GetAsync(IFilter filter = null)
         {
-            if (filter != null)
+            try
             {
-                var song = Mapper.Map<IEnumerable<SongPOCO>>(
-                    await Repository.GetWhere<Song>()
-                    .OrderBy(a => a.Name)
-                    .ToListAsync());
-
-                if (!string.IsNullOrWhiteSpace(filter.SearchString))
+                if (filter != null)
                 {
-                    song = song.Where(a => a.Name.ToUpper()
-                        .Contains(filter.SearchString.ToUpper()))
-                        .ToList();
-                }
+                    var song = Mapper.Map<IEnumerable<SongPOCO>>(
+                        await Repository.GetWhere<Song>()
+                        .OrderBy(a => a.Name)
+                        .ToListAsync());
 
-                return song;
+                    if (!string.IsNullOrWhiteSpace(filter.SearchString))
+                    {
+                        song = song.Where(a => a.Name.ToUpper()
+                            .Contains(filter.SearchString.ToUpper()))
+                            .ToList();
+                    }
+
+                    return song;
+                }
+                else
+                {
+                    return Mapper.Map<IEnumerable<ISong>>(await Repository.GetWhere<Song>().ToListAsync());
+                }
             }
-            else
+            catch (Exception e)
             {
-                return Mapper.Map<IEnumerable<ISong>>(await Repository.GetWhere<Song>().ToListAsync());
+                throw e;
             }
         }
 
@@ -60,27 +67,33 @@ namespace mono_lvl3.Repository
             return Mapper.Map<SongPOCO>(await Repository.GetWhere<Song>().Where(a => a.Id == id).FirstOrDefaultAsync());
         }
 
-        public virtual Task<int> AddAsync(IUnitOfWork unitOfWork, ISong song)
+        public virtual Task<int> AddAsync(ISong song)
         {
-            return unitOfWork.AddAsync<Song>(Mapper.Map<Song>(song));
-            //return Repository.AddAsync<Song>(Mapper.Map<Song>(song));
+            return Repository.AddAsync<Song>(Mapper.Map<Song>(song));
         }
 
-        public virtual Task<int> UpdateAsync(IUnitOfWork unitOfWork, ISong song)
+        public virtual Task<int> UpdateAsync(ISong song)
         {
-            return unitOfWork.UpdateAsync<Song>(Mapper.Map<Song>(song));
-            //return Repository.UpdateAsync<Song>(Mapper.Map<Song>(song));
+            return Repository.UpdateAsync<Song>(Mapper.Map<Song>(song));
         }
 
-        public virtual Task<int> DeleteAsync(IUnitOfWork unitOfWork, Guid id)
+        public virtual Task<int> DeleteAsync(Guid id)
         {
-            return unitOfWork.DeleteAsync<Song>(id);
-            //return Repository.DeleteAsync<Song>(id);
+            return Repository.DeleteAsync<Song>(id);
         }
 
         public Task<IUnitOfWork> CreateUnitOfWork()
         {
             return Task.FromResult(Repository.CreateUnitOfWork());
+        }
+
+        public IEnumerable<IAlbum> GetAlbumsAsync()
+        {
+            var albums = Mapper.Map<IEnumerable<AlbumPOCO>>(Repository.GetWhere<Album>()
+                                                                      .OrderBy(a => a.Name)
+                                                                      .ToList());
+
+            return albums;
         }
 
         #endregion Methods

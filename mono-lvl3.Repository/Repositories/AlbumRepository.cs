@@ -33,25 +33,32 @@ namespace mono_lvl3.Repository
 
         public virtual async Task<IEnumerable<IAlbum>> GetAsync(IFilter filter = null)
         {
-            if (filter != null)
+            try
             {
-                var album = Mapper.Map<IEnumerable<AlbumPOCO>>(
-                    await Repository.GetWhere<Album>()
-                    .OrderBy(a => a.Name)
-                    .ToListAsync());
-
-                if (!string.IsNullOrWhiteSpace(filter.SearchString))
+                if (filter != null)
                 {
-                    album = album.Where(a => a.Name.ToUpper()
-                        .Contains(filter.SearchString.ToUpper()))
-                        .ToList();
-                }
+                    var albums = Mapper.Map<IEnumerable<AlbumPOCO>>(
+                        await Repository.GetWhere<Album>()
+                        .OrderBy(a => a.Name)
+                        .ToListAsync());
 
-                return album;
+                    if (!string.IsNullOrWhiteSpace(filter.SearchString))
+                    {
+                        albums = albums.Where(a => a.Name.ToUpper()
+                            .Contains(filter.SearchString.ToUpper()))
+                            .ToList();
+                    }
+
+                    return albums;
+                }
+                else
+                {
+                    return Mapper.Map<IEnumerable<IAlbum>>(await Repository.GetWhere<Album>().ToListAsync());
+                }
             }
-            else
+            catch (Exception e)
             {
-                return Mapper.Map<IEnumerable<IAlbum>>(await Repository.GetWhere<Album>().ToListAsync());
+                throw e;
             }
         }
 
@@ -60,22 +67,19 @@ namespace mono_lvl3.Repository
             return Mapper.Map<AlbumPOCO>(await Repository.GetWhere<Album>().Where(a => a.Id == id).FirstOrDefaultAsync());
         }
 
-        public virtual Task<int> AddAsync(IUnitOfWork unitOfWork, IAlbum album)
+        public virtual Task<int> AddAsync(IAlbum album)
         {
-            return unitOfWork.AddAsync<Album>(Mapper.Map<Album>(album));
-            //return Repository.AddAsync<Album>(Mapper.Map<Album>(album));
+            return Repository.AddAsync<Album>(Mapper.Map<Album>(album));
         }
 
-        public virtual Task<int> UpdateAsync(IUnitOfWork unitOfWork, IAlbum album)
+        public virtual Task<int> UpdateAsync(IAlbum album)
         {
-            return unitOfWork.UpdateAsync<Album>(Mapper.Map<Album>(album));
-            //return Repository.UpdateAsync<Album>(Mapper.Map<Album>(album));
+            return Repository.UpdateAsync<Album>(Mapper.Map<Album>(album));
         }
 
-        public virtual Task<int> DeleteAsync(IUnitOfWork unitOfWork, Guid id)
+        public virtual Task<int> DeleteAsync(Guid id)
         {
-            return unitOfWork.DeleteAsync<Album>(id);
-            //return Repository.DeleteAsync<Album>(id);
+            return Repository.DeleteAsync<Album>(id);
         }
 
         public Task<IUnitOfWork> CreateUnitOfWork()

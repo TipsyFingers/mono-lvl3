@@ -12,7 +12,7 @@ namespace mono_lvl3.Model.Common
         string Name { get; set; }
         decimal Duration { get; set; }
         string Genre { get; set; }
-        Guid Album_Id { get; set; }
+        Guid AlbumId { get; set; }
 
         IAlbum Album { get; set; }
         ICollection<IArtist> Artists { get; set; }
