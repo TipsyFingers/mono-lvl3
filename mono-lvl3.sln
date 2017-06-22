@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mono-lvl3.Model", "mono-lvl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mono-lvl3.Model.Common", "mono-lvl3.Models.Common\mono-lvl3.Model.Common.csproj", "{24B162D5-7F57-4A26-8EF9-EC423E558CA2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mono-lvl3.WebAPI", "mono-lvl3.WebAPI\mono-lvl3.WebAPI.csproj", "{B389D373-F322-45BF-AAE1-07C5FF9DAD9B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mono-lvl3.WebMVC", "mono-lvl3.WebAPI\mono-lvl3.WebMVC.csproj", "{B389D373-F322-45BF-AAE1-07C5FF9DAD9B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mono-lvl3.Repository.Tests", "mono-lvl3.Repository.Tests\mono-lvl3.Repository.Tests.csproj", "{94E5CD53-7516-4DC4-A185-0B7142603F3B}"
 EndProject

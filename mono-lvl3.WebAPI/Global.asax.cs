@@ -6,9 +6,9 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using AutoMapper;
 using mono_lvl3.Model.Mapping;
-using mono_lvl3.WebAPI.Mapping;
+using mono_lvl3.WebMVC.Mapping;
 
-namespace mono_lvl3.WebAPI
+namespace mono_lvl3.WebMVC
 {
     public class MvcApplication : System.Web.HttpApplication
     {

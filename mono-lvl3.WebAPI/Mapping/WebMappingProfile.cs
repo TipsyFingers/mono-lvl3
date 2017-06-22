@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using mono_lvl3.WebAPI.ViewModels;
+using mono_lvl3.WebMVC.ViewModels;
 using mono_lvl3.Model.DomainModels;
 using mono_lvl3.Model.Common;
 
-namespace mono_lvl3.WebAPI.Mapping
+namespace mono_lvl3.WebMVC.Mapping
 {
     public class WebMappingProfile : Profile
     {

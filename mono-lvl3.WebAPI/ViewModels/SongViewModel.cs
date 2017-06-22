@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace mono_lvl3.WebAPI.ViewModels
+namespace mono_lvl3.WebMVC.ViewModels
 {
     public class SongViewModel
     {

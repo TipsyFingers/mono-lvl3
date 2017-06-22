@@ -2,7 +2,7 @@
 using mono_lvl3.Model.Common;
 using mono_lvl3.Model.DomainModels;
 using mono_lvl3.Service.Common;
-using mono_lvl3.WebAPI.ViewModels;
+using mono_lvl3.WebMVC.ViewModels;
 using PagedList;
 using System;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
-namespace mono_lvl3.WebAPI.Controllers
+namespace mono_lvl3.WebMVC.Controllers
 {
     public class ArtistController : Controller
     {

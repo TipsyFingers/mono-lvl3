@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace mono_lvl3.WebAPI
+namespace mono_lvl3.WebMVC
 {
     public class RouteConfig
     {
