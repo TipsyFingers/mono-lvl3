@@ -10,8 +10,6 @@ namespace mono_lvl3.WebMVC.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
-    using System.Collections.Generic;
-    using Ninject.Modules;
     using System.Linq;
 
     public static class NinjectWebCommon 
