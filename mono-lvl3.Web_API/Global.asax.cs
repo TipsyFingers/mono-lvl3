@@ -1,4 +1,7 @@
-﻿using System;
+﻿using AutoMapper;
+using mono_lvl3.Model.Mapping;
+using mono_lvl3.Web_API.Mapping;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -18,6 +21,11 @@ namespace mono_lvl3.Web_API
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            //App_Start.MappingProfile.InitializeAutoMapper();
+            Mapper.Initialize(cfg => {
+                cfg.AddProfile<ModelMappingProfile>();
+                cfg.AddProfile<WebAPIMappingProfile>();
+            });
         }
     }
 }
