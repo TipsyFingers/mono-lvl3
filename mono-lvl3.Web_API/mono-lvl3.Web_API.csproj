@@ -1071,9 +1071,17 @@
       <Project>{4a540bb2-477d-4bfd-91be-5b56617fa71a}</Project>
       <Name>mono-lvl3.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\mono-lvl3.Repository\mono-lvl3.Repository.csproj">
+      <Project>{ffeaf278-26fd-48bb-95ac-8fe64768bbdc}</Project>
+      <Name>mono-lvl3.Repository</Name>
+    </ProjectReference>
     <ProjectReference Include="..\mono-lvl3.Service.Common\mono-lvl3.Service.Common.csproj">
       <Project>{a7573dd5-f53c-4199-8935-9a7c398d08db}</Project>
       <Name>mono-lvl3.Service.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\mono-lvl3.Service\mono-lvl3.Service.csproj">
+      <Project>{8D93FCF0-3112-40F9-9481-0863F559E092}</Project>
+      <Name>mono-lvl3.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
