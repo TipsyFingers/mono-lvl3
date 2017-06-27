@@ -1,15 +1,14 @@
-﻿using mono_lvl3.Service.Common;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using AutoMapper;
-using mono_lvl3.Web_API.ViewModels;
+using mono_lvl3.Service.Common;
 using mono_lvl3.Common.Filters;
-using mono_lvl3.Model.Common;
 using mono_lvl3.Model.DomainModels;
+using mono_lvl3.Web_API.ViewModels;
 
 namespace mono_lvl3.Web_API.Controllers
 {
@@ -40,7 +39,7 @@ namespace mono_lvl3.Web_API.Controllers
 
         [HttpGet]
         [Route("{pageNumber}/{pageSize}")]
-        public async Task<HttpResponseMessage> Get(string searchString = "", int pageNumber = 0, int pageSize = 0)
+        public async Task<HttpResponseMessage> Get(string searchString = "", int pageNumber = 1, int pageSize = 10)
         {
             try
             {

@@ -94,6 +94,10 @@
       <HintPath>..\packages\Ninject.Web.WebApi.3.2.4.0\lib\net45-full\Ninject.Web.WebApi.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Ninject.Web.WebApi.WebHost, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.WebApi.WebHost.3.2.4.0\lib\net45-full\Ninject.Web.WebApi.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Ninject.WebApi.DependencyResolver, Version=0.1.4758.24814, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.WebApi.DependencyResolver.0.1.4758.24814\lib\net45\Ninject.WebApi.DependencyResolver.dll</HintPath>
       <Private>True</Private>
@@ -1071,17 +1075,9 @@
       <Project>{4a540bb2-477d-4bfd-91be-5b56617fa71a}</Project>
       <Name>mono-lvl3.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\mono-lvl3.Repository\mono-lvl3.Repository.csproj">
-      <Project>{ffeaf278-26fd-48bb-95ac-8fe64768bbdc}</Project>
-      <Name>mono-lvl3.Repository</Name>
-    </ProjectReference>
     <ProjectReference Include="..\mono-lvl3.Service.Common\mono-lvl3.Service.Common.csproj">
       <Project>{a7573dd5-f53c-4199-8935-9a7c398d08db}</Project>
       <Name>mono-lvl3.Service.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\mono-lvl3.Service\mono-lvl3.Service.csproj">
-      <Project>{8D93FCF0-3112-40F9-9481-0863F559E092}</Project>
-      <Name>mono-lvl3.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

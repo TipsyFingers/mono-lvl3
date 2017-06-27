@@ -10,11 +10,11 @@ namespace mono_lvl3.Web_API.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
-    using System.Web.Http;
     using Ninject.Web.WebApi;
+    using System.Web.Http;
     using System.Linq;
-    using Service.Common;
-    using Service;
+    using Ninject.Web.WebApi.Filter;
+    using System.Web.ModelBinding;
 
     public static class NinjectWebCommon 
     {
@@ -54,7 +54,7 @@ namespace mono_lvl3.Web_API.App_Start
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
 
                 RegisterServices(kernel);
-                GlobalConfiguration.Configuration.DependencyResolver = new NinjectDependencyResolver(kernel);
+                //GlobalConfiguration.Configuration.DependencyResolver = new NinjectDependencyResolver(kernel);
                 return kernel;
             }
             catch
@@ -70,6 +70,7 @@ namespace mono_lvl3.Web_API.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            
         }        
     }
 }

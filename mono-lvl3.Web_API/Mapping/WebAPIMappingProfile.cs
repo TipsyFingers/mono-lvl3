@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using mono_lvl3.Web_API.ViewModels;
-using mono_lvl3.Model.DomainModels;
 using mono_lvl3.Model.Common;
+using mono_lvl3.Model.DomainModels;
 
 namespace mono_lvl3.Web_API.Mapping
 {
