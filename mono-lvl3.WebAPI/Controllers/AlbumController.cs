@@ -89,7 +89,7 @@ namespace mono_lvl3.WebMVC.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id, Name, Genre, Price, Relased")] AlbumViewModel album)
+        public async Task<ActionResult> Create([Bind(Include = "Id, Name, Genre, Price")] AlbumViewModel album)
         {
             album.Id = Guid.NewGuid();
             
@@ -131,7 +131,7 @@ namespace mono_lvl3.WebMVC.Controllers
         /// <returns>Albums</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id, Name, Genre, Price, Relased")] AlbumViewModel album)
+        public async Task<ActionResult> Edit([Bind(Include = "Id, Name, Genre, Price")] AlbumViewModel album)
         {
             if (ModelState.IsValid)
             {

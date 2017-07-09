@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+
+</body>
+</html>
+<br />
+<h2>Artists:</h2>
+<table >
+    <thead>
+        <tr>
+            <th>&nbsp;</th>  <!--Ovo je tu za test-->
+            <th>Artist Name</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>From</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="artist in artists">
+            <td>{{artist.id}}</td>  <!--Ovo je tu za test-->
+            <td><input type="text" ng-model="artist.artistName" /></td>
+            <td><input type="text" ng-model="artist.fName" /></td>
+            <td><input type="text" ng-model="artist.lName" /></td>
+            <td><input type="text" ng-model="artist.from" /></td>
+            <td>
+                <button ng-click="deleteArtist(artist.id)">Delete</button>
+                <button ng-click="updateArtist(artist.id)">Update</button>
+                <button ng-click="getDiscography(artist.id)">View Discography</button>
+                
+            </td>
+        </tr>
+        <tr>
+            <td><input type="hidden" ng-model="newArtist.id"/></td>  <!--Ovo je tu za test-->
+            <td><input type="text" ng-model="newArtist.artistName" /></td>
+            <td><input type="text" ng-model="newArtist.fName" /></td>
+            <td><input type="text" ng-model="newArtist.lName" /></td>
+            <td><input type="text" ng-model="newArtist.from" /></td>
+            <td><button ng-click="insertArtist()">New Artist</button></td>
+            
+        </tr>
+    </tbody>
+</table>
+<br />
+
+<br />
+<h2>Albums</h2>
+<table style="width: 400px">
+    <thead>
+        <tr>
+            <th>Album Name</th>
+            <th>Genre</th>
+            <th>Price</th>
+            <th>Relase Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="album in albums">
+            <td>{{album.name}}</td>
+            <td>{{album.genre}}</td>
+            <td>{{album.price}}</td>
+        </tr>
+    </tbody>
+</table>
+<br />
+<h2>Songs</h2>
+<table style="width: 400px">
+    <thead>
+        <tr>
+            <th>Songs Name</th>
+            <th>Duration</th>
+            <th>Genre</th>            
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="song in songs">
+            <td>{{song.name}}</td>
+            <td>{{song.duration}}</td>
+            <td>{{song.genre}}</td>
+        </tr>
+    </tbody>
+</table>
+<br />
+<span class="status">{{status}}</span>
+<br />
+<br />

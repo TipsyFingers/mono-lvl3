@@ -17,14 +17,12 @@ namespace mono_lvl3.DAL.Mapping
 
             this.Property(t => t.Price);
 
-            this.Property(t => t.Relased);
 
             // Table and Column mappings
             this.ToTable("Albums");
             this.Property(t => t.Name).HasColumnName("AlbumName").HasColumnType("NVarchar");
             this.Property(t => t.Genre).HasColumnName("Genre").HasColumnType("NVarchar");
             this.Property(t => t.Price).HasColumnName("Price").HasColumnType("Decimal").HasPrecision(18, 2);
-            this.Property(t => t.Relased).HasColumnName("RelaseDate").HasColumnType("DateTime");
 
 
             // Relationships

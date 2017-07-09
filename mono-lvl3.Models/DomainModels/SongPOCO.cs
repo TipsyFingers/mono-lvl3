@@ -12,7 +12,6 @@ namespace mono_lvl3.Model.DomainModels
         public string Genre { get; set; }
         public Guid AlbumId { get; set; }
 
-        //public virtual IAlbum Album { get; set; }
         public virtual ICollection<IArtist> Artists { get; set; }
     }
 }

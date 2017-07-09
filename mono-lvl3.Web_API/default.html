@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html ng-app="musicApp">
+<head>
+    <title>Proba</title>
+    <link href="Content/Site.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        Select controller:
+        <a href="default.html#/artist"><button>Artist</button></a>
+        <a href="default.html#/album"><button>Album</button></a>
+        <a href="default.html#/song"><button>Song</button></a>
+    </div>
+    <div class="content-wrapper">
+        <div ng-view=""></div>
+    </div>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular-route.min.js"></script>
+    <script src="Scripts/angular-uuid2.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/controllers/artistController.js"></script>
+    <script src="app/controllers/albumController.js"></script>
+    <script src="app/controllers/songController.js"></script>
+    <script src="app/services/artistFactory.js"></script>
+    <script src="app/services/albumFactory.js"></script>
+    <script src="app/services/songFactory.js"></script>
+</body>
+</html>

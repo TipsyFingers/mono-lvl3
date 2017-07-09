@@ -9,10 +9,11 @@ using mono_lvl3.Service.Common;
 using mono_lvl3.Common.Filters;
 using mono_lvl3.Model.DomainModels;
 using mono_lvl3.Web_API.ViewModels;
+using System.Web.Http.Cors;
 
 namespace mono_lvl3.Web_API.Controllers
 {
-
+    //
     [RoutePrefix("api/artist")]
     public class ArtistController : ApiController
     {
@@ -38,7 +39,7 @@ namespace mono_lvl3.Web_API.Controllers
         #region Methods
 
         [HttpGet]
-        [Route("{pageNumber}/{pageSize}")]
+        //[Route("{pageNumber}/{pageSize}")]
         public async Task<HttpResponseMessage> Get(string searchString = "", int pageNumber = 0, int pageSize = 0)
         {
             try
@@ -61,8 +62,8 @@ namespace mono_lvl3.Web_API.Controllers
             }
         }
 
-        [HttpGet]
         [Route("{id:guid}")]
+        [HttpGet]
         public async Task<HttpResponseMessage> Get(Guid id)
         {
             try
@@ -90,7 +91,12 @@ namespace mono_lvl3.Web_API.Controllers
         {
             try
             {
-                var artist = await Service.AddAsync(Mapper.Map<ArtistPOCO>(artistViewModel));
+                if (!ModelState.IsValid)
+                {
+                    Request.CreateResponse(HttpStatusCode.BadRequest, "ModelState invalid!");
+                }
+
+                var artist = await Service.AddAsync(Mapper.Map<ArtistPOCO>(artistViewModel));  //problem
 
                 if (artist == 1)
                 {
@@ -98,8 +104,7 @@ namespace mono_lvl3.Web_API.Controllers
                 }
                 else
                 {
-                    return Request.CreateResponse(HttpStatusCode.InternalServerError,
-                        "Post failed.");
+                    return Request.CreateResponse(HttpStatusCode.InternalServerError, "Post failed.");
                 }
             }
             catch (Exception e)
@@ -107,15 +112,21 @@ namespace mono_lvl3.Web_API.Controllers
                 return Request.CreateResponse(HttpStatusCode.BadRequest, e.ToString());
             }
         }
-
-
-        [HttpPut]
+        
+        
         [Route("{id:guid}")]
-        public async Task<HttpResponseMessage> Put(Guid id, ArtistViewModel artistViewModel)
+        [HttpPut]
+        public async Task<HttpResponseMessage> Put(Guid id, [FromBody]ArtistViewModel artistViewModel)
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    Request.CreateResponse(HttpStatusCode.BadRequest, "ModelState invalid!");
+                }
+
                 var result = await Service.UpdateAsync(Mapper.Map<ArtistPOCO>(artistViewModel));
+
                 if (result == 1)
                 {
                     return Request.CreateResponse(HttpStatusCode.OK, artistViewModel);

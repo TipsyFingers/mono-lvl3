@@ -1,4 +1,6 @@
-﻿using System;
+﻿using mono_lvl3.Model.Common;
+using System;
+using System.Collections.Generic;
 
 namespace mono_lvl3.Web_API.ViewModels
 {
@@ -9,5 +11,8 @@ namespace mono_lvl3.Web_API.ViewModels
         public string FName { get; set; }
         public string LName { get; set; }
         public string From { get; set; }
+
+        public virtual ICollection<IAlbum> Albums { get; set; }
+        public virtual ICollection<ISong> Songs { get; set; }
     }
 }

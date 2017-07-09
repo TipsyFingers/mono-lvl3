@@ -10,7 +10,6 @@ namespace mono_lvl3.Model.DomainModels
         public string Name { get; set; }
         public string Genre { get; set; }
         public decimal Price { get; set; }
-        public DateTime Relased { get; set; }
 
         public virtual ICollection<IArtist> Artists { get; set; }
         public virtual ICollection<ISong> Songs { get; set; }

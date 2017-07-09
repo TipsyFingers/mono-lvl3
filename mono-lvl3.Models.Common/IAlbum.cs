@@ -12,7 +12,6 @@ namespace mono_lvl3.Model.Common
         string Name { get; set; }
         string Genre { get; set; }
         decimal Price { get; set; }
-        DateTime Relased { get; set; }
 
         ICollection<IArtist> Artists { get; set; }
         ICollection<ISong> Songs { get; set; }

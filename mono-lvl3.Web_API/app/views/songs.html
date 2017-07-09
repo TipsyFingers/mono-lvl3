@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+
+</body>
+</html>
+<br />
+<h2>Songs:</h2>
+<table>
+    <thead>
+        <tr>
+            <th>&nbsp;</th>
+            <th>Song Name</th>
+            <th>Duration</th>
+            <th>Genre</th>
+            <th>AlbumId</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="song in songs">
+            <td>{{song.id}}</td>    <!--Ovo je tu za test-->
+            <td><input type="text" ng-model="song.name" /></td>
+            <td><input type="text" ng-model="song.duration" /></td>
+            <td><input type="text" ng-model="song.genre" /></td>
+            <td><input type="text" ng-model="song.albumId" /></td>
+            <td>
+                <button ng-click="deleteSong(song.id)">Delete</button>
+                <button ng-click="updateSong(song.id)">Update</button>
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>  <!--Ovo je tu za test-->
+            <td><input type="text" ng-model="newSong.name" /></td>
+            <td><input type="text" ng-model="newSong.duration" /></td>
+            <td><input type="text" ng-model="newSong.genre" /></td>
+            <td><input type="text" ng-model="newSong.albumId" /></td>
+            <td><button ng-click="insertSong()">New Song</button></td>
+        </tr>
+    </tbody>
+</table>
+<br />
+
+<br />
+<br />
+<span class="status">{{status}}</span>
+<br />
+<br />

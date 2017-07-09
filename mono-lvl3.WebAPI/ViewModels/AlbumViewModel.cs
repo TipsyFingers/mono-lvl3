@@ -22,11 +22,6 @@ namespace mono_lvl3.WebMVC.ViewModels
         [DisplayFormat(DataFormatString = "{0:#.##}")]
         public decimal Price { get; set; }
 
-        [DisplayName("Datum izlaska")]
-        [DataType(DataType.DateTime)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime Relased { get; set; }
-
 
         /// <summary>
         ///  Navigation properties

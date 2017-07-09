@@ -38,7 +38,7 @@ namespace mono_lvl3.Web_API.Controllers
         #region Methods
 
         [HttpGet]
-        [Route("{pageNumber}/{pageSize}")]
+        //[Route("{pageNumber}/{pageSize}")]
         public async Task<HttpResponseMessage> Get(string searchString = "", int pageNumber = 0, int pageSize = 0)
         {
             try

@@ -38,7 +38,7 @@ namespace mono_lvl3.Web_API.Controllers
         #region Methods
 
         [HttpGet]
-        [Route("{pageNumber}/{pageSize}")]
+        //[Route("{pageNumber}/{pageSize}")]
         public async Task<HttpResponseMessage> Get(string searchString = "", int pageNumber = 1, int pageSize = 10)
         {
             try
@@ -90,6 +90,11 @@ namespace mono_lvl3.Web_API.Controllers
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    Request.CreateResponse(HttpStatusCode.BadRequest, "ModelState invalid!");
+                }
+
                 var album = await Service.AddAsync(Mapper.Map<AlbumPOCO>(albumViewModel));
 
                 if (album == 1)
@@ -111,11 +116,17 @@ namespace mono_lvl3.Web_API.Controllers
 
         [HttpPut]
         [Route("{id:guid}")]
-        public async Task<HttpResponseMessage> Put(Guid id, AlbumViewModel albumViewModel)
+        public async Task<HttpResponseMessage> Put(Guid id, [FromBody]AlbumViewModel albumViewModel)
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    Request.CreateResponse(HttpStatusCode.BadRequest, "ModelState invalid!");
+                }
+
                 var result = await Service.UpdateAsync(Mapper.Map<AlbumPOCO>(albumViewModel));
+
                 if (result == 1)
                 {
                     return Request.CreateResponse(HttpStatusCode.OK, albumViewModel);

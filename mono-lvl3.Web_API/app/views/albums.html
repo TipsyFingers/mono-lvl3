@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+
+</body>
+</html>
+<br />
+<h2>Albums:</h2>
+<table>
+    <thead>
+        <tr>
+            <th>&nbsp;</th>
+            <th>Album Name</th>
+            <th>Genre</th>
+            <th>Price</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="album in albums">
+            <td>{{album.id}}</td>
+            <td><input type="text" ng-model="album.name" /></td>
+            <td><input type="text" ng-model="album.genre" /></td>
+            <td><input type="text" ng-model="album.price" /></td>
+            <td>
+                <button ng-click="deleteAlbum(album.id)">Delete</button>
+                <button ng-click="updateAlbum(album.id)">Update</button>
+                <button ng-click="getAlbumSongs(album.id)">View Songs</button>
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>  <!--Ovo je tu za test-->
+            <td><input type="text" ng-model="newAlbum.name" /></td>
+            <td><input type="text" ng-model="newAlbum.genre" /></td>
+            <td><input type="text" ng-model="newAlbum.price" /></td>
+            <td><button ng-click="insertAlbum()">New Album</button></td>
+        </tr>
+    </tbody>
+</table>
+<br />
+
+<br />
+<h2>Selected album songs</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Song Name</th>
+            <th>Duration</th>
+            <th>Genre</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="song in songs">
+            <td>{{song.name}}</td>
+            <td>{{song.duration}}</td>
+            <td>{{song.genre}}</td>
+        </tr>
+    </tbody>
+</table>
+<br />
+<span class="status">{{status}}</span>
+<br />
+<br />

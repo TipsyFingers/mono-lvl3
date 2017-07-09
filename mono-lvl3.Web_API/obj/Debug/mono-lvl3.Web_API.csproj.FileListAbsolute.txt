@@ -81,3 +81,16 @@ C:\Users\Kruno\Documents\Visual Studio 2015\Projects\mono-lvl3\mono-lvl3.Web_API
 C:\Users\Kruno\Documents\Visual Studio 2015\Projects\mono-lvl3\mono-lvl3.Web_API\bin\EntityFramework.xml
 C:\Users\Kruno\Documents\Visual Studio 2015\Projects\mono-lvl3\mono-lvl3.Web_API\bin\Ninject.Web.WebApi.WebHost.dll
 C:\Users\Kruno\Documents\Visual Studio 2015\Projects\mono-lvl3\mono-lvl3.Web_API\bin\Ninject.Web.WebApi.WebHost.xml
+C:\Users\Kruno\Documents\Visual Studio 2015\Projects\mono-lvl3\mono-lvl3.Web_API\bin\mono-lvl3.Repository.dll
+C:\Users\Kruno\Documents\Visual Studio 2015\Projects\mono-lvl3\mono-lvl3.Web_API\bin\mono-lvl3.Service.dll
+C:\Users\Kruno\Documents\Visual Studio 2015\Projects\mono-lvl3\mono-lvl3.Web_API\bin\mono-lvl3.Repository.Common.dll
+C:\Users\Kruno\Documents\Visual Studio 2015\Projects\mono-lvl3\mono-lvl3.Web_API\bin\Ninject.Extensions.Factory.dll
+C:\Users\Kruno\Documents\Visual Studio 2015\Projects\mono-lvl3\mono-lvl3.Web_API\bin\Castle.Core.dll
+C:\Users\Kruno\Documents\Visual Studio 2015\Projects\mono-lvl3\mono-lvl3.Web_API\bin\mono-lvl3.Repository.pdb
+C:\Users\Kruno\Documents\Visual Studio 2015\Projects\mono-lvl3\mono-lvl3.Web_API\bin\mono-lvl3.Service.pdb
+C:\Users\Kruno\Documents\Visual Studio 2015\Projects\mono-lvl3\mono-lvl3.Web_API\bin\mono-lvl3.Repository.Common.pdb
+C:\Users\Kruno\Documents\Visual Studio 2015\Projects\mono-lvl3\mono-lvl3.Web_API\bin\Ninject.Extensions.Factory.xml
+C:\Users\Kruno\Documents\Visual Studio 2015\Projects\mono-lvl3\mono-lvl3.Web_API\bin\Castle.Core.xml
+C:\Users\Kruno\Documents\Visual Studio 2015\Projects\mono-lvl3\mono-lvl3.Web_API\bin\System.Web.Cors.dll
+C:\Users\Kruno\Documents\Visual Studio 2015\Projects\mono-lvl3\mono-lvl3.Web_API\bin\System.Web.Http.Cors.dll
+C:\Users\Kruno\Documents\Visual Studio 2015\Projects\mono-lvl3\mono-lvl3.Web_API\bin\System.Web.Http.Cors.xml

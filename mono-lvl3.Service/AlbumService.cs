@@ -42,10 +42,7 @@ namespace mono_lvl3.Service
 
         public async Task<int> AddAsync(IAlbum album)
         {
-            IUnitOfWork unitOfWork = await Repository.CreateUnitOfWork();
-
-            await Repository.AddAsync(album);
-            return await unitOfWork.CommitAsync();
+            return await Repository.AddAsync(album);
         }
 
         public async Task<int> UpdateAsync(IAlbum album)
