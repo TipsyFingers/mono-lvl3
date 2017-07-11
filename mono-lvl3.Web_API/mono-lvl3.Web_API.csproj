@@ -211,12 +211,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.js" />
+    <Content Include="app\controllers\albumArtistsController.js" />
     <Content Include="app\controllers\albumController.js" />
     <Content Include="app\controllers\artistController.js" />
     <Content Include="app\controllers\songController.js" />
-    <Content Include="app\services\albumFactory.js" />
-    <Content Include="app\services\artistFactory.js" />
-    <Content Include="app\services\songFactory.js" />
+    <Content Include="app\factories\albumFactory.js" />
+    <Content Include="app\factories\artistFactory.js" />
+    <Content Include="app\factories\songFactory.js" />
+    <Content Include="app\services\albumArtistsService.js" />
+    <Content Include="app\views\addArtists.html" />
     <Content Include="app\views\albums.html" />
     <Content Include="app\views\artists.html" />
     <Content Include="app\views\songs.html" />
@@ -253,8 +256,6 @@
     <Content Include="Scripts\angular-scenario.js" />
     <Content Include="Scripts\angular-touch.js" />
     <Content Include="Scripts\angular-touch.min.js" />
-    <Content Include="Scripts\angular-uuid2.js" />
-    <Content Include="Scripts\angular-uuid2.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\bootstrap.js" />

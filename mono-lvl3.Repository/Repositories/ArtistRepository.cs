@@ -69,6 +69,7 @@ namespace mono_lvl3.Repository
 
         public virtual Task<int> AddAsync(IArtist artist)
         {
+            artist.Id = Guid.NewGuid();
             return Repository.AddAsync<Artist>(Mapper.Map<Artist>(artist));
         }
 

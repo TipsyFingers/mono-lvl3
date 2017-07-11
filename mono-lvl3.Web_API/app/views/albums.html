@@ -30,6 +30,7 @@
                 <button ng-click="deleteAlbum(album.id)">Delete</button>
                 <button ng-click="updateAlbum(album.id)">Update</button>
                 <button ng-click="getAlbumSongs(album.id)">View Songs</button>
+                <button ng-click="redirect('/addArtists/' + album.id)">Add Artists</button>
             </td>
         </tr>
         <tr>
@@ -44,7 +45,23 @@
 <br />
 
 <br />
-<h2>Selected album songs</h2>
+<h2>Selected album</h2>
+<br />
+<h3>Artists:</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Artist Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="artist in artists">
+            <td>{{song.artistName}}</td>   <!--jos nista-->
+        </tr>
+    </tbody>
+</table>
+
+<h3>Songs:</h3>
 <table>
     <thead>
         <tr>
@@ -61,6 +78,7 @@
         </tr>
     </tbody>
 </table>
+
 <br />
 <span class="status">{{status}}</span>
 <br />

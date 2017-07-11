@@ -86,7 +86,7 @@ namespace mono_lvl3.Web_API.Controllers
         }
 
         [HttpPost]
-        public async Task<HttpResponseMessage> Post(AlbumViewModel albumViewModel)
+        public async Task<HttpResponseMessage> Post([FromBody]AlbumViewModel albumViewModel)
         {
             try
             {

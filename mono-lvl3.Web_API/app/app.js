@@ -1,6 +1,9 @@
-﻿(function () {
+﻿/// <reference path="C:\Users\Kruno\Documents\Visual Studio 2015\Projects\mono-lvl3\mono-lvl3.Web_API\Scripts/angular.min.js" />
 
-    var app = angular.module('musicApp', ['ngRoute', 'angularUUID2']);
+
+(function () {
+
+    var app = angular.module('musicApp', ['ngRoute']);
     var viewBase = '/app/views/';
 
     app.config(['$routeProvider', function ($routeProvider) {
@@ -18,19 +21,12 @@
                 controller: 'songController',
                 templateUrl: viewBase + 'songs.html'
             })
+            .when('/addArtists/:id', {
+                controller: 'albumArtistsController',
+                templateUrl: viewBase + 'addArtists.html'
+            })
             .otherwise({ redirectTo: '/' });
 
-        //$routeProvider.when('/album', {
-        //    controller: 'albumController',
-        //    templateUrl: '/app/views/albums.html'
-        //})
-        //.otherwise({ redirectTo: '/' });
-
-        //$routeProvider.when('/song', {
-        //    controller: 'songController',
-        //    templateUrl: '/app/views/songs.html'
-        //})
-        //.otherwise({ redirectTo: '/' });
     }]);
 
 }());

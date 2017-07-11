@@ -1,16 +1,16 @@
 ﻿(function () {
 
-    var injectParams = ['$scope', '$route', 'uuid2', 'artistFactory'];
-    var ArtistController = function ($scope, $route, uuid2, artistFactory) {
+    var injectParams = ['$scope', '$route', 'artistFactory'];
+    var ArtistController = function ($scope, $route, artistFactory) {
 
-        $scope.status;
+
         $scope.artists;
         $scope.albums;
         $scope.songs;
         $scope.newArtist;
-
+        
         getArtists();
-
+        $scope.status;
         function getArtists() {
             artistFactory.getArtists()
                 .success(function (artists) {
@@ -40,16 +40,15 @@
               });
         };
 
-        $scope.insertArtist = function () {
-            
+        $scope.insertArtist = function () {            
             var artist = $scope.newArtist;
-            artist.id = uuid2.newguid();
 
             artistFactory.insertArtist(artist)
                 .success(function () {                    
                     $scope.status = 'Inserted Artist! Refreshing artist list.';
                     $scope.artists.push(artist);
-                    $scope.newArtist = null;                    
+                    $scope.newArtist = null;
+                    $route.reload();
                 }).
                 error(function (error) {
                     $scope.status = 'Unable to insert artist: ' + error.message;
@@ -76,19 +75,19 @@
         };
 
         $scope.getDiscography = function (id) {
-            artistFactory.getAlbums()
-                .then(function (albums) {
-                    for (var i = 0; i < albums.length; i++) {
-                        if (albums[i].id == id) {
-                            $scope.albums.push(albums[i]);
-                        }
-                    }
-                });
+            //artistFactory.getAlbums()
+            //    .then(function (albums) {
+            //        for (var i = 0; i < albums.length; i++) {
+            //            if (albums[i].id == id) {
+            //                $scope.albums.push(albums[i]);
+            //            }
+            //        }
+            //    });
         };
     };
 
     ArtistController.$inject = injectParams;
-
+    
     angular.module('musicApp').controller('artistController', ArtistController);
 
 }());

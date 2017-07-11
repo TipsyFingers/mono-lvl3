@@ -1,7 +1,7 @@
 ﻿(function () {
 
-    var injectParams = ['$scope', '$route', 'uuid2', 'songFactory'];
-    var SongController = function ($scope, $route, uuid2, songFactory) {
+    var injectParams = ['$scope', '$route', 'songFactory'];
+    var SongController = function ($scope, $route, songFactory) {
 
         $scope.status;
         $scope.songs;
@@ -39,15 +39,14 @@
         };
 
         $scope.insertSong = function () {
-
             var song = $scope.newSong;
-            song.id = uuid2.newguid();
 
             songFactory.insertSong(song)
                 .success(function () {
                     $scope.status = 'Inserted Song! Refreshing song list.';
                     $scope.songs.push(song);
                     $scope.newSong = null;
+                    $route.reload();
                 }).
                 error(function (error) {
                     $scope.status = 'Unable to insert song: ' + error.message;

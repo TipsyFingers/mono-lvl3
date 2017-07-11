@@ -1,10 +1,12 @@
-﻿(function () {
+﻿
+(function () {
 
-    var injectParams = ['$scope', '$route', 'uuid2', 'albumFactory'];
-    var AlbumController = function ($scope, $route, uuid2, albumFactory) {
+    var injectParams = ['$scope', '$route', '$location', 'albumFactory'];
+    var AlbumController = function ($scope, $route, $location, albumFactory) {
 
         $scope.status;
         $scope.albums;
+        $scope.artists = [];
         $scope.songs = [];
         $scope.newAlbum;
 
@@ -40,15 +42,14 @@
         };
 
         $scope.insertAlbum = function () {
-
             var album = $scope.newAlbum;
-            album.id = uuid2.newguid();
 
             albumFactory.insertAlbum(album)
                 .success(function () {
                     $scope.status = 'Inserted Album! Refreshing album list.';
                     $scope.albums.push(album);
                     $scope.newAlbum = null;
+                    $route.reload();
                 }).
                 error(function (error) {
                     $scope.status = 'Unable to insert album: ' + error.message;
@@ -86,10 +87,13 @@
                     }
                 });
         };
+
+        $scope.redirect = function (path) {
+            $location.url(path);
+        }
     };
 
     AlbumController.$inject = injectParams;
 
     angular.module('musicApp').controller('albumController', AlbumController);
-
 }());
