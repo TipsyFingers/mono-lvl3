@@ -1,13 +1,15 @@
 ﻿(function () {
 
-    var injectParams = ['$scope', '$route', 'songFactory'];
-    var SongController = function ($scope, $route, songFactory) {
+    var injectParams = ['$scope', '$route', 'songFactory', 'albumFactory'];
+    var SongController = function ($scope, $route, songFactory, albumFactory) {
 
         $scope.status;
         $scope.songs;
+        $scope.albums;
         $scope.newSong;
 
         getSongs();
+        getAlbums();
 
         function getSongs() {
             songFactory.getSongs()
@@ -16,6 +18,16 @@
                 })
                 .error(function (error) {
                     $scope.status = 'Unable to load songs: ' + error.message;
+                });
+        }
+
+        function getAlbums() {
+            albumFactory.getAlbum()
+                .success(function (albums) {
+                    $scope.albums = albums;
+                })
+                .error(function (error) {
+                    $scope.status = 'Unable to load albums: ' + error.message;
                 });
         }
 

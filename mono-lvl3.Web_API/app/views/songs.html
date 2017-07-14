@@ -17,7 +17,7 @@
             <th>Song Name</th>
             <th>Duration</th>
             <th>Genre</th>
-            <th>AlbumId</th>
+            <th>Album id</th>
             <th>&nbsp;</th>
         </tr>
     </thead>
@@ -38,8 +38,12 @@
             <td><input type="text" ng-model="newSong.name" /></td>
             <td><input type="text" ng-model="newSong.duration" /></td>
             <td><input type="text" ng-model="newSong.genre" /></td>
-            <td><input type="text" ng-model="newSong.albumId" /></td>
-            <td><button ng-click="insertSong()">New Song</button></td>
+            <td>
+                <select name="selectAlbum" ng-model="newSong.albumId">
+                    <option value="{{album.id}}" ng-repeat="album in albums">{{album.name}}</option>
+                </select>
+            </td>
+<td><button ng-click="insertSong()">New Song</button></td>
         </tr>
     </tbody>
 </table>
