@@ -13,9 +13,8 @@ namespace mono_lvl3.Repository.Common
         Task<int> AddAsync(ISong song);
         Task<int> UpdateAsync(ISong song);
         Task<int> DeleteAsync(Guid id);
-        Task<IUnitOfWork> CreateUnitOfWork();
 
         // Za popunjavanje dropdown liste za odabir albuma na kojemu se nalazi pjesma
-        IEnumerable<IAlbum> GetAlbumsAsync();
+        //IEnumerable<IAlbum> GetAlbumsAsync();
     }
 }

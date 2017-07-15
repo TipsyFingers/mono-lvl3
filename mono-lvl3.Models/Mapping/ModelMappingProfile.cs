@@ -9,17 +9,17 @@ namespace mono_lvl3.Model.Mapping
     {
         public ModelMappingProfile()
         {
-            CreateMap<Artist, ArtistPOCO>().ReverseMap();
+            CreateMap<Artist, ArtistDomainModel>().ReverseMap();
             CreateMap<Artist, IArtist>().ReverseMap();
-            CreateMap<IArtist, ArtistPOCO>().ReverseMap();
+            CreateMap<IArtist, ArtistDomainModel>().ReverseMap();
 
-            CreateMap<Album, AlbumPOCO>().ReverseMap();
+            CreateMap<Album, AlbumDomainModel>().ReverseMap();
             CreateMap<Album, IAlbum>().ReverseMap();
-            CreateMap<IAlbum, AlbumPOCO>().ReverseMap();
+            CreateMap<IAlbum, AlbumDomainModel>().ReverseMap();
 
-            CreateMap<Song, SongPOCO>().ReverseMap();
+            CreateMap<Song, SongDomainModel>().ReverseMap();
             CreateMap<Song, ISong>().ReverseMap();
-            CreateMap<ISong, SongPOCO>().ReverseMap();
+            CreateMap<ISong, SongDomainModel>().ReverseMap();
         }
     }
 }

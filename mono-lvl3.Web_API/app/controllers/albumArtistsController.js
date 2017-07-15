@@ -46,10 +46,8 @@
             return list.indexOf(item) > -1;
         };
 
-        $scope.submitArtists = function (album, list) {
-            album.artists = list;
-            $scope.outputJson = album; //
-            albumArtistsService.addArtists(album);            
+        $scope.submitArtists = function () { 
+            albumArtistsService.addArtists($scope.album.id, $scope.selectedArtists);
         };
 
         

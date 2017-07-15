@@ -7,6 +7,7 @@ namespace mono_lvl3.DAL.Mapping
     {
         public AlbumMap()
         {
+            
             // Primary Key
             this.HasKey(t => t.Id);
 
@@ -16,6 +17,7 @@ namespace mono_lvl3.DAL.Mapping
             this.Property(t => t.Genre).HasMaxLength(50);
 
             this.Property(t => t.Price);
+
 
 
             // Table and Column mappings

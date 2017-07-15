@@ -93,10 +93,10 @@ namespace mono_lvl3.Web_API.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    Request.CreateResponse(HttpStatusCode.BadRequest, "ModelState invalid!");
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, "ModelState invalid!");
                 }
 
-                var artist = await Service.AddAsync(Mapper.Map<ArtistPOCO>(artistViewModel));  //problem
+                var artist = await Service.AddAsync(Mapper.Map<ArtistDomainModel>(artistViewModel));  //problem
 
                 if (artist == 1)
                 {
@@ -122,10 +122,10 @@ namespace mono_lvl3.Web_API.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    Request.CreateResponse(HttpStatusCode.BadRequest, "ModelState invalid!");
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, "ModelState invalid!");
                 }
 
-                var result = await Service.UpdateAsync(Mapper.Map<ArtistPOCO>(artistViewModel));
+                var result = await Service.UpdateAsync(Mapper.Map<ArtistDomainModel>(artistViewModel));
 
                 if (result == 1)
                 {

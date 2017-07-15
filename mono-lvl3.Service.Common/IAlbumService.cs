@@ -16,6 +16,7 @@ namespace mono_lvl3.Service.Common
         Task<IAlbum> GetByIDAsync(Guid id);
         Task<int> AddAsync(IAlbum album);
         Task<int> UpdateAsync(IAlbum album);
+        Task<IAlbum> AddArtistsToAlbum(Guid id, IEnumerable<Guid> artistIds);
         Task<int> DeleteAsync(Guid id);
 
         #endregion Methods

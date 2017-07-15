@@ -10,13 +10,13 @@ namespace mono_lvl3.WebMVC.Mapping
         public WebMappingProfile()
         {
             CreateMap<ArtistViewModel, IArtist>().ReverseMap();
-            CreateMap<ArtistViewModel, ArtistPOCO>().ReverseMap();
+            CreateMap<ArtistViewModel, ArtistDomainModel>().ReverseMap();
 
             CreateMap<AlbumViewModel, IAlbum>().ReverseMap();
-            CreateMap<AlbumViewModel, AlbumPOCO>().ReverseMap();
+            CreateMap<AlbumViewModel, AlbumDomainModel>().ReverseMap();
 
             CreateMap<SongViewModel, ISong>().ReverseMap();
-            CreateMap<SongViewModel, SongPOCO>().ReverseMap();
+            CreateMap<SongViewModel, SongDomainModel>().ReverseMap();
         }
     }
 }

@@ -90,7 +90,7 @@ namespace mono_lvl3.Web_API.Controllers
         {
             try
             {
-                var song = await Service.AddAsync(Mapper.Map<SongPOCO>(songViewModel));
+                var song = await Service.AddAsync(Mapper.Map<SongDomainModel>(songViewModel));
 
                 if (song == 1)
                 {
@@ -115,7 +115,7 @@ namespace mono_lvl3.Web_API.Controllers
         {
             try
             {
-                var result = await Service.UpdateAsync(Mapper.Map<SongPOCO>(songViewModel));
+                var result = await Service.UpdateAsync(Mapper.Map<SongDomainModel>(songViewModel));
                 if (result == 1)
                 {
                     return Request.CreateResponse(HttpStatusCode.OK, songViewModel);

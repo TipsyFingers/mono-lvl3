@@ -7,8 +7,8 @@
                         <div ng-repeat="artist in artists" class="standard" flex="50">
                             <label>
                                 <input type="checkbox"
-                                       ng-checked="exists(artist, selectedArtists)"
-                                       ng-click="toggle(artist, selectedArtists)" /> {{ artist.artistName }}
+                                       ng-checked="exists(artist.id, selectedArtists)"
+                                       ng-click="toggle(artist.id, selectedArtists)" /> {{ artist.artistName }}
                             </label>
                         </div>
                     </div>

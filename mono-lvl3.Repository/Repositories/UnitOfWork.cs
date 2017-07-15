@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Transactions;
 using mono_lvl3.Repository.Common;
 using mono_lvl3.DAL.DbContext;
+using mono_lvl3.DAL.EntityModels;
 
 namespace mono_lvl3.Repository
 {

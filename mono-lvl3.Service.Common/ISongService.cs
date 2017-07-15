@@ -19,7 +19,7 @@ namespace mono_lvl3.Service.Common
         Task<int> DeleteAsync(Guid id);
 
         // Za popunjavanje dropdown liste za odabir albuma na kojemu se nalazi pjesma
-        IEnumerable<IAlbum> GetAlbumsAsync();
+        //IEnumerable<IAlbum> GetAlbumsAsync();
 
         #endregion Methods
     }

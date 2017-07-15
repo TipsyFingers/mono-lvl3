@@ -11,8 +11,8 @@
             return albumFactory.getAlbum(id);
         }
 
-        this.addArtists = function (album) {
-            return albumFactory.updateAlbum(album);
+        this.addArtists = function (albumId, artistIds) {
+            return albumFactory.addArtists(albumId, artistIds);
         };
     };
 

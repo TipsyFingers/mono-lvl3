@@ -4,7 +4,7 @@ using mono_lvl3.Model.Common;
 
 namespace mono_lvl3.Model.DomainModels
 {
-    public class ArtistPOCO : IArtist
+    public class ArtistDomainModel : IArtist
     {
         public Guid Id { get; set; }
         public string ArtistName { get; set; }

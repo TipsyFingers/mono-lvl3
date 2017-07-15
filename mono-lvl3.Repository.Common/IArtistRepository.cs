@@ -14,6 +14,5 @@ namespace mono_lvl3.Repository.Common
         Task<int> AddAsync(IArtist artist); /// INT umjesto interface
         Task<int> UpdateAsync(IArtist artist);
         Task<int> DeleteAsync(Guid id);
-        Task<IUnitOfWork> CreateUnitOfWork();
     }
 }

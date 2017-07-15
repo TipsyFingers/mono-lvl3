@@ -37,7 +37,7 @@ namespace mono_lvl3.Repository
             {
                 if (filter != null)
                 {
-                    var song = Mapper.Map<IEnumerable<SongPOCO>>(
+                    var song = Mapper.Map<IEnumerable<SongDomainModel>>(
                         await Repository.GetWhere<Song>()
                         .OrderBy(a => a.Name)
                         .ToListAsync());
@@ -64,7 +64,7 @@ namespace mono_lvl3.Repository
 
         public virtual async Task<ISong> GetByIDAsync(Guid id)
         {
-            return Mapper.Map<SongPOCO>(await Repository.GetWhere<Song>().Where(a => a.Id == id).FirstOrDefaultAsync());
+            return Mapper.Map<SongDomainModel>(await Repository.GetWhere<Song>().Where(a => a.Id == id).FirstOrDefaultAsync());
         }
 
         public virtual Task<int> AddAsync(ISong song)
@@ -90,13 +90,13 @@ namespace mono_lvl3.Repository
 
 
         // Za popunjavanje dropdown liste za odabir albuma na kojemu se nalazi pjesma
-        public IEnumerable<IAlbum> GetAlbumsAsync()
-        {
-            var albums = Mapper.Map<IEnumerable<AlbumPOCO>>(Repository.GetWhere<Album>()
-                                                                      .OrderBy(a => a.Name)
-                                                                      .ToList());
-            return albums;
-        }
+        //public IEnumerable<IAlbum> GetAlbumsAsync()
+        //{
+        //    var albums = Mapper.Map<IEnumerable<AlbumPOCO>>(Repository.GetWhere<Album>()
+        //                                                              .OrderBy(a => a.Name)
+        //                                                              .ToList());
+        //    return albums;
+        //}
 
         #endregion Methods
     }

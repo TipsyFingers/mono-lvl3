@@ -90,12 +90,12 @@ namespace mono_lvl3.Web_API.Controllers
         {
             try
             {
-                if (!ModelState.IsValid)
+                if (!ModelState.IsValid || albumViewModel == null)
                 {
-                    Request.CreateResponse(HttpStatusCode.BadRequest, "ModelState invalid!");
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, "ModelState invalid!");
                 }
 
-                var album = await Service.AddAsync(Mapper.Map<AlbumPOCO>(albumViewModel));
+                var album = await Service.AddAsync(Mapper.Map<AlbumDomainModel>(albumViewModel));
 
                 if (album == 1)
                 {
@@ -113,6 +113,35 @@ namespace mono_lvl3.Web_API.Controllers
             }
         }
 
+        // add artists to album
+        [HttpPost]
+        [Route("{id:guid}")]
+        public async Task<HttpResponseMessage> Post(Guid id, [FromBody]IEnumerable<Guid> artistIds)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, "ModelState invalid!");
+                }
+
+                var album = await Service.GetByIDAsync(id);
+
+                if (album != null)
+                {
+                    await Service.AddArtistsToAlbum(id, artistIds);
+                    album = await Service.GetByIDAsync(id);
+                    return Request.CreateResponse(HttpStatusCode.OK, album);
+                }
+
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Post failed.");
+            }
+            catch (Exception e)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, e.ToString());
+            }
+        }
+
 
         [HttpPut]
         [Route("{id:guid}")]
@@ -122,10 +151,9 @@ namespace mono_lvl3.Web_API.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    Request.CreateResponse(HttpStatusCode.BadRequest, "ModelState invalid!");
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, "ModelState invalid!");
                 }
-
-                var result = await Service.UpdateAsync(Mapper.Map<AlbumPOCO>(albumViewModel));
+                var result = await Service.UpdateAsync(Mapper.Map<AlbumDomainModel>(albumViewModel));
 
                 if (result == 1)
                 {

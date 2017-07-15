@@ -8,9 +8,9 @@ namespace mono_lvl3.Model
     {
         public override void Load()
         {
-            Bind<IAlbum>().To<AlbumPOCO>();
-            Bind<IArtist>().To<ArtistPOCO>();
-            Bind<ISong>().To<SongPOCO>();
+            Bind<IAlbum>().To<AlbumDomainModel>();
+            Bind<IArtist>().To<ArtistDomainModel>();
+            Bind<ISong>().To<SongDomainModel>();
         }
     }
 }

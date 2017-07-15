@@ -72,8 +72,17 @@ namespace mono_lvl3.Repository
         }
 
         public virtual async Task<int> UpdateAsync<T>(T entity) where T : class
-        {
+        {            
             DbEntityEntry dbEntityEntry = DbContext.Entry(entity);
+
+            //if (typeof(T) == typeof(DAL.EntityModels.Album))////////////////////
+            //{
+            //    if (dbEntityEntry.Property("Albums").IsModified)
+            //    {
+            //        return 1;
+            //    }
+            //}
+
             if (dbEntityEntry.State == EntityState.Detached)
             {
                 DbContext.Set<T>().Attach(entity);

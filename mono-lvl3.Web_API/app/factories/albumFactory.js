@@ -10,8 +10,7 @@
         };
 
         factory.getAlbum = function (id) {
-            var a = $http.get(urlBase + '/' + id);
-            return a;
+            return $http.get(urlBase + '/' + id);
         };
 
         factory.insertAlbum = function (album) {
@@ -19,9 +18,12 @@
         };
 
         factory.updateAlbum = function (album) {
-            var a = $http.put(urlBase + '/' + album.id, album);
             return $http.put(urlBase + '/' + album.id, album);
         };
+
+        factory.addArtists = function (albumId, artistIds) {
+            return $http.post(urlBase + '/' + albumId, artistIds)
+        }
 
         factory.deleteAlbum = function (id) {
             return $http.delete(urlBase + '/' + id);

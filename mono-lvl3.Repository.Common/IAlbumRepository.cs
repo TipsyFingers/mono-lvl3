@@ -14,6 +14,6 @@ namespace mono_lvl3.Repository.Common
         Task<int> AddAsync(IAlbum album);
         Task<int> UpdateAsync(IAlbum album);
         Task<int> DeleteAsync(Guid id);
-        Task<IUnitOfWork> CreateUnitOfWork();
+        Task<IAlbum> AddArtistsToAlbumAsync(Guid id, IEnumerable<Guid> artistIds);
     }
 }

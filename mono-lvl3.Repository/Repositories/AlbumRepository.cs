@@ -31,13 +31,18 @@ namespace mono_lvl3.Repository
 
         #region Methods
 
+        private IUnitOfWork CreateUnitOfWork()
+        {
+            return Repository.CreateUnitOfWork();
+        }
+
         public virtual async Task<IEnumerable<IAlbum>> GetAsync(IFilter filter = null)
         {
             try
             {
                 if (filter != null)
                 {
-                    var albums = Mapper.Map<IEnumerable<AlbumPOCO>>(
+                    var albums = Mapper.Map<IEnumerable<AlbumDomainModel>>( //IQueryable vs (IEnumerable & List)
                         await Repository.GetWhere<Album>()
                         .OrderBy(a => a.Name)
                         .ToListAsync());
@@ -64,29 +69,66 @@ namespace mono_lvl3.Repository
 
         public virtual async Task<IAlbum> GetByIDAsync(Guid id)
         {
-            return Mapper.Map<AlbumPOCO>(await Repository.GetWhere<Album>().Where(a => a.Id == id).FirstOrDefaultAsync());
+            return Mapper.Map<AlbumDomainModel>(await Repository.GetWhere<Album>().Where(a => a.Id == id).FirstOrDefaultAsync());
         }
 
-        public virtual Task<int> AddAsync(IAlbum album)
+        public virtual async Task<int> AddAsync(IAlbum album)
         {
+            IUnitOfWork unitOfWork = CreateUnitOfWork();
+
             album.Id = Guid.NewGuid();
-            return Repository.AddAsync<Album>(Mapper.Map<Album>(album));
+
+            await unitOfWork.AddAsync<Album>(Mapper.Map<Album>(album));
+            return await unitOfWork.CommitAsync();
         }
 
-        public virtual Task<int> UpdateAsync(IAlbum album)
+        public virtual async Task<int> UpdateAsync(IAlbum album)
         {
-            return Repository.UpdateAsync<Album>(Mapper.Map<Album>(album));
+            return await Repository.UpdateAsync<Album>(Mapper.Map<Album>(album));
         }
 
-        public virtual Task<int> DeleteAsync(Guid id)
+        public virtual async Task<IAlbum> AddArtistsToAlbumAsync(Guid id, IEnumerable<Guid> artistIds)
         {
-            return Repository.DeleteAsync<Album>(id);
+            try
+            {
+                var album = Mapper.Map<AlbumDomainModel>(await Repository.GetWhere<Album>().Where(a => a.Id == id).FirstOrDefaultAsync());
+                IUnitOfWork unitOfWork = CreateUnitOfWork();
+
+                foreach (Guid artistId in artistIds)
+                {
+                    var artist = Mapper.Map<ArtistDomainModel>(await Repository.GetWhere<Artist>().Where(a => a.Id == artistId).FirstOrDefaultAsync());
+                    album.Artists.Add(artist);
+                    
+                    //await uow.AddAsync<Album>(Mapper.Map<Album>(album.Artists));
+                }
+                //var abcd = await unitOfWork.UpdateAsync(Mapper.Map<Album>(album));
+                //await uow.AddAsync<Album>(Mapper.Map<Album>(album));
+                //var abc = await unitOfWork.CommitAsync();
+                var avc = await Repository.UpdateAsync(Mapper.Map<Album>(album));
+
+                return album;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
-        public Task<IUnitOfWork> CreateUnitOfWork()
+        public virtual async Task<int> DeleteAsync(Guid id)
         {
-            return Task.FromResult(Repository.CreateUnitOfWork());
+            try
+            {
+                IUnitOfWork unitOfWork = CreateUnitOfWork();
+
+                await unitOfWork.DeleteAsync<AlbumDomainModel>(id);
+                return await unitOfWork.CommitAsync();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
+
 
         #endregion Methods
     }

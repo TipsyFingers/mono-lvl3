@@ -17,9 +17,33 @@ namespace mono_lvl3.DAL.DbContext
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            //modelBuilder.Configurations.Add(new AlbumMap());
+            //modelBuilder.Configurations.Add(new ArtistMap());
+            //modelBuilder.Configurations.Add(new SongMap());
+
             modelBuilder.Entity<Artist>().ToTable("Artists");
             modelBuilder.Entity<Album>().ToTable("Albums");
             modelBuilder.Entity<Song>().ToTable("Songs");
+
+            modelBuilder.Entity<Album>()
+                .HasMany(t => t.Artists)
+                .WithMany(t => t.Albums);
+
+            modelBuilder.Entity<Artist>()
+                .HasMany(t => t.Songs)
+                .WithMany(t => t.Artists);
+
+            modelBuilder.Entity<Artist>()
+                .HasMany(t => t.Albums)
+                .WithMany(t => t.Artists);
+
+            modelBuilder.Entity<Song>()
+                .HasMany(t => t.Artists)
+                .WithMany(t => t.Songs);
+
+
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 

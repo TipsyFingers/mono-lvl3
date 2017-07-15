@@ -95,7 +95,7 @@ namespace mono_lvl3.WebMVC.Controllers
             
             if (ModelState.IsValid)
             {
-                await Service.AddAsync(Mapper.Map<AlbumPOCO>(album));
+                await Service.AddAsync(Mapper.Map<AlbumDomainModel>(album));
                 return RedirectToAction("Index");
             }
 
@@ -135,7 +135,7 @@ namespace mono_lvl3.WebMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                await Service.UpdateAsync(Mapper.Map<AlbumPOCO>(album));
+                await Service.UpdateAsync(Mapper.Map<AlbumDomainModel>(album));
                 return RedirectToAction("Index");
             }
             return View();

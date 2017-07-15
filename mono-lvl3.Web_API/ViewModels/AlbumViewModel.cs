@@ -11,7 +11,7 @@ namespace mono_lvl3.Web_API.ViewModels
         public string Genre { get; set; }
         public decimal Price { get; set; }
 
-        public virtual ICollection<IArtist> Artists { get; set; }
+        public virtual IEnumerable<Guid> Artists { get; set; }
         public virtual ICollection<ISong> Songs { get; set; }
     }
 }

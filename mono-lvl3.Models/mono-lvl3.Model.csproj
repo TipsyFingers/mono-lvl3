@@ -66,9 +66,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DIModule.cs" />
-    <Compile Include="DomainModels\AlbumPOCO.cs" />
-    <Compile Include="DomainModels\ArtistPOCO.cs" />
-    <Compile Include="DomainModels\SongPOCO.cs" />
+    <Compile Include="DomainModels\AlbumDomainModel.cs" />
+    <Compile Include="DomainModels\ArtistDomainModel.cs" />
+    <Compile Include="DomainModels\SongDomainModel.cs" />
     <Compile Include="Mapping\ModelMappingProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

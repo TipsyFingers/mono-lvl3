@@ -14,15 +14,17 @@ namespace mono_lvl3.Service
         #region Properties
 
         protected IAlbumRepository Repository { get; private set; }
+        protected IArtistRepository ArtistRepository { get; private set; }
 
         #endregion Properties
 
 
         #region Constructors
 
-        public AlbumService(IAlbumRepository repository)
+        public AlbumService(IAlbumRepository repository, IArtistRepository artistRepository)
         {
             this.Repository = repository;
+            this.ArtistRepository = artistRepository;
         }
 
         #endregion Constructors
@@ -32,39 +34,90 @@ namespace mono_lvl3.Service
 
         public async Task<IEnumerable<IAlbum>> GetAsync(IFilter filter = null)
         {
-            return await Repository.GetAsync(filter);
+            try
+            {
+                return await Repository.GetAsync(filter);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }            
         }
 
         public async Task<IAlbum> GetByIDAsync(Guid id)
         {
-            return await Repository.GetByIDAsync(id);
+            try
+            {
+                return await Repository.GetByIDAsync(id);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public async Task<int> AddAsync(IAlbum album)
         {
-            return await Repository.AddAsync(album);
+            try
+            {
+                return await Repository.AddAsync(album);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public async Task<int> UpdateAsync(IAlbum album)
         {
-            return await Repository.UpdateAsync(album);
+            try
+            {
+                return await Repository.UpdateAsync(album);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
-        public async Task<int> DeleteAsync(Guid id)
-        {
-            return await Repository.DeleteAsync(id);
-        }
-
-        public async Task<int> DeleteAsync(params Guid[] id)
+        public async Task<IAlbum> AddArtistsToAlbum(Guid id, IEnumerable<Guid> artistIds)
         {
             try
             {
-                IUnitOfWork unitOfWork = await Repository.CreateUnitOfWork();
-                foreach (Guid i in id)
-                {
-                    await unitOfWork.DeleteAsync<IArtist>(i);
-                }
-                return await unitOfWork.CommitAsync();
+                return await Repository.AddArtistsToAlbumAsync(id, artistIds);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        //public async Task<IEnumerable<IAlbum>> AddArtistsToAlbum(Guid id, IEnumerable<Guid> artistIds)
+        //{
+        //    try
+        //    {
+        //        var album = await this.Repository.GetByIDAsync(id);
+                
+        //        foreach(Guid artistId in artistIds)
+        //        {
+        //            var artist = await this.ArtistRepository.GetByIDAsync(artistId);
+        //            album.Artists.Add(artist);
+        //        }
+        //        return album;
+
+                
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        throw e;
+        //    }
+        //}
+
+        public async Task<int> DeleteAsync(Guid id)
+        {
+            try
+            {
+                return await Repository.DeleteAsync(id);
             }
             catch (Exception e)
             {

@@ -37,7 +37,7 @@ namespace mono_lvl3.Repository
             {
                 if (filter != null)
                 {
-                    var artists = Mapper.Map<IEnumerable<ArtistPOCO>>(
+                    var artists = Mapper.Map<IEnumerable<ArtistDomainModel>>(
                         await Repository.GetWhere<Artist>()
                         .OrderBy(a => a.LName)
                         .ToListAsync());
