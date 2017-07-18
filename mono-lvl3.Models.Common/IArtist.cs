@@ -14,7 +14,7 @@ namespace mono_lvl3.Model.Common
         string LName { get; set; }
         string From { get; set; }
 
-        ICollection<IAlbum> Albums { get; set; }
-        ICollection<ISong> Songs { get; set; }
+        //ICollection<IAlbum> Albums { get; set; }
+        //ICollection<ISong> Songs { get; set; }
     }
 }

@@ -13,7 +13,7 @@ namespace mono_lvl3.Web_API.ViewModels
         public Guid AlbumId { get; set; }
 
 
-        public virtual IAlbum Album { get; set; }
+        //public virtual IAlbum Album { get; set; }
         public virtual IEnumerable<Guid> Artists { get; set; }
     }
 }

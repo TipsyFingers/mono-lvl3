@@ -37,7 +37,7 @@ namespace mono_lvl3.Repository
             {
                 if (filter != null)
                 {
-                    var artists = Mapper.Map<IEnumerable<ArtistDomainModel>>(
+                    var artists = Mapper.Map<IEnumerable<IArtist>>(
                         await Repository.GetWhere<Artist>()
                         .OrderBy(a => a.LName)
                         .ToListAsync());
@@ -45,8 +45,7 @@ namespace mono_lvl3.Repository
                     if (!string.IsNullOrWhiteSpace(filter.SearchString))
                     {
                         artists = artists.Where(a => a.ArtistName.ToUpper()
-                            .Contains(filter.SearchString.ToUpper()))
-                            .ToList();
+                            .Contains(filter.SearchString.ToUpper()));
                     }
 
                     return artists;

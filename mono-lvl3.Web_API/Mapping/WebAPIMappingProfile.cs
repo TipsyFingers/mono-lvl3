@@ -2,6 +2,7 @@
 using mono_lvl3.Web_API.ViewModels;
 using mono_lvl3.Model.Common;
 using mono_lvl3.Model.DomainModels;
+using System;
 
 namespace mono_lvl3.Web_API.Mapping
 {
@@ -17,6 +18,10 @@ namespace mono_lvl3.Web_API.Mapping
 
             CreateMap<SongViewModel, ISong>().ReverseMap();
             CreateMap<SongViewModel, SongDomainModel>().ReverseMap();
+
+            CreateMap<IArtist, Guid>().ConstructUsing(src => src.Id);
+            CreateMap<IAlbum, Guid>().ConstructUsing(src => src.Id);
+            CreateMap<ISong, Guid>().ConstructUsing(src => src.Id);
         }
     }
 }

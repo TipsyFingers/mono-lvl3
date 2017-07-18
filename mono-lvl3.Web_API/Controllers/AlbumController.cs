@@ -43,12 +43,11 @@ namespace mono_lvl3.Web_API.Controllers
         {
             try
             {
-                var albums = await Service.GetAsync(new Filter(searchString, pageNumber, pageSize));
+                var albums = Mapper.Map<IEnumerable<AlbumViewModel>>(await Service.GetAsync(new Filter(searchString, pageNumber, pageSize)));
 
                 if (albums != null)
                 {
-                    return Request.CreateResponse(HttpStatusCode.OK,
-                        Mapper.Map<List<AlbumViewModel>>(albums));
+                    return Request.CreateResponse(HttpStatusCode.OK, albums);
                 }
                 else
                 {
@@ -129,7 +128,7 @@ namespace mono_lvl3.Web_API.Controllers
 
                 if (album != null)
                 {
-                    await Service.AddArtistsToAlbum(id, artistIds);
+                    await Service.AddArtistsToAlbumAsync(id, artistIds);
                     album = await Service.GetByIDAsync(id);
                     return Request.CreateResponse(HttpStatusCode.OK, album);
                 }

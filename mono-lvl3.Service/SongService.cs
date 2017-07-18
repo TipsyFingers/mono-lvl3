@@ -32,27 +32,74 @@ namespace mono_lvl3.Service
 
         public async Task<IEnumerable<ISong>> GetAsync(IFilter filter = null)
         {
-            return await Repository.GetAsync(filter);
+            try
+            {
+                return await Repository.GetAsync(filter);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public async Task<ISong> GetByIDAsync(Guid id)
         {
-            return await Repository.GetByIDAsync(id);
+            try
+            {
+                return await Repository.GetByIDAsync(id);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public async Task<int> AddAsync(ISong song)
         {
-            return await Repository.AddAsync(song);
+            try
+            {
+                return await Repository.AddAsync(song);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public async Task<int> UpdateAsync(ISong song)
         {
-            return await Repository.UpdateAsync(song);
+            try
+            {
+                return await Repository.UpdateAsync(song);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public async Task<IAlbum> AddArtistsToSongAsync(Guid id, IEnumerable<Guid> artistIds)
+        {
+            try
+            {
+                return await Repository.AddArtistsToSongAsync(id, artistIds);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public async Task<int> DeleteAsync(Guid id)
         {
-            return await Repository.DeleteAsync(id);
+            try
+            {
+                return await Repository.DeleteAsync(id);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
 

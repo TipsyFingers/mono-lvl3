@@ -1,12 +1,12 @@
 ﻿(function () {
 
-    var injectParams = ['$scope', '$route', 'albumArtistsService'];
-    var AlbumArtistsController = function ($scope, $route, albumArtistsService) {
+    var injectParams = ['$scope', '$route', '$location', 'albumArtistsService'];
+    var AlbumArtistsController = function ($scope, $route, $location, albumArtistsService) {
         
-        $scope.artists;
-        $scope.selectedArtists = [];
+        $scope.artists;        
         $scope.albumId = $route.current.params.id.valueOf();
-        $scope.album = albumArtistsService.getAlbum();        
+        $scope.album = albumArtistsService.getAlbum();
+        $scope.selectedArtists = [];
 
         getArtists();
         getAlbum($scope.albumId);
@@ -26,6 +26,7 @@
             albumArtistsService.getAlbum(id)
                 .success(function (album) {
                     $scope.album = album;
+                    $scope.selectedArtists = album.artists;
                 })
             .error(function (error) {
                 $scope.status = 'Unable to load album: ' + error.message;
@@ -48,6 +49,7 @@
 
         $scope.submitArtists = function () { 
             albumArtistsService.addArtists($scope.album.id, $scope.selectedArtists);
+            $location.url('/album');
         };
 
         

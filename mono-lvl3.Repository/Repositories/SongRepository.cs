@@ -31,13 +31,18 @@ namespace mono_lvl3.Repository
 
         #region Methods
 
+        private IUnitOfWork CreateUnitOfWork()
+        {
+            return Repository.CreateUnitOfWork();
+        }
+
         public virtual async Task<IEnumerable<ISong>> GetAsync(IFilter filter = null)
         {
             try
             {
                 if (filter != null)
                 {
-                    var song = Mapper.Map<IEnumerable<SongDomainModel>>(
+                    var song = Mapper.Map<IEnumerable<ISong>>(
                         await Repository.GetWhere<Song>()
                         .OrderBy(a => a.Name)
                         .ToListAsync());
@@ -45,8 +50,7 @@ namespace mono_lvl3.Repository
                     if (!string.IsNullOrWhiteSpace(filter.SearchString))
                     {
                         song = song.Where(a => a.Name.ToUpper()
-                            .Contains(filter.SearchString.ToUpper()))
-                            .ToList();
+                            .Contains(filter.SearchString.ToUpper()));                            
                     }
 
                     return song;
@@ -78,14 +82,31 @@ namespace mono_lvl3.Repository
             return Repository.UpdateAsync<Song>(Mapper.Map<Song>(song));
         }
 
+        public virtual async Task<IAlbum> AddArtistsToSongAsync(Guid id, IEnumerable<Guid> artistIds)
+        {
+            try
+            {
+                var song = await Repository.GetWhere<Song>().Where(a => a.Id == id).FirstOrDefaultAsync();
+                IUnitOfWork unitOfWork = CreateUnitOfWork();
+
+                foreach (Guid artistId in artistIds)
+                {
+                    var artist = await Repository.GetWhere<Artist>().Where(a => a.Id == artistId).FirstOrDefaultAsync();
+                    song.Artists.Add(artist);
+                }
+                await Repository.UpdateAsync(song);
+                song = await Repository.GetByIDAsync<Song>(id);
+                return Mapper.Map<AlbumDomainModel>(song);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
         public virtual Task<int> DeleteAsync(Guid id)
         {
             return Repository.DeleteAsync<Song>(id);
-        }
-
-        public Task<IUnitOfWork> CreateUnitOfWork()
-        {
-            return Task.FromResult(Repository.CreateUnitOfWork());
         }
 
 

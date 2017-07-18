@@ -43,12 +43,11 @@ namespace mono_lvl3.Web_API.Controllers
         {
             try
             {
-                var songs = await Service.GetAsync(new Filter(searchString, pageNumber, pageSize));
+                var songs = Mapper.Map<IEnumerable<SongViewModel>>(await Service.GetAsync(new Filter(searchString, pageNumber, pageSize)));
 
                 if (songs != null)
                 {
-                    return Request.CreateResponse(HttpStatusCode.OK,
-                        Mapper.Map<List<SongViewModel>>(songs));
+                    return Request.CreateResponse(HttpStatusCode.OK, songs);
                 }
                 else
                 {
@@ -101,6 +100,36 @@ namespace mono_lvl3.Web_API.Controllers
                     return Request.CreateResponse(HttpStatusCode.InternalServerError,
                         "Post failed.");
                 }
+            }
+            catch (Exception e)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, e.ToString());
+            }
+        }
+
+
+        // add artists to album
+        [HttpPost]
+        [Route("{id:guid}")]
+        public async Task<HttpResponseMessage> Post(Guid id, [FromBody]IEnumerable<Guid> artistIds)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, "ModelState invalid!");
+                }
+
+                var song = await Service.GetByIDAsync(id);
+
+                if (song != null)
+                {
+                    await Service.AddArtistsToSongAsync(id, artistIds);
+                    song = await Service.GetByIDAsync(id);
+                    return Request.CreateResponse(HttpStatusCode.OK, song);
+                }
+
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Post failed.");
             }
             catch (Exception e)
             {

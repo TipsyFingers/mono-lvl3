@@ -5,6 +5,7 @@ using mono_lvl3.Common.Filters;
 using mono_lvl3.Model.Common;
 using mono_lvl3.Repository.Common;
 using mono_lvl3.Service.Common;
+using System.Linq;
 
 namespace mono_lvl3.Service
 {
@@ -31,27 +32,62 @@ namespace mono_lvl3.Service
 
         public async Task<IEnumerable<IArtist>> GetAsync(IFilter filter = null)
         {
-            return await Repository.GetAsync(filter);
+            try
+            {
+                return await Repository.GetAsync(filter);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public async Task<IArtist> GetByIDAsync(Guid id)
         {
-            return await Repository.GetByIDAsync(id);
+            try
+            {
+                return await Repository.GetByIDAsync(id);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public async Task<int> AddAsync(IArtist artist)
         {
-            return await Repository.AddAsync(artist);
+            try
+            {
+                return await Repository.AddAsync(artist);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public Task<int> UpdateAsync(IArtist artist)
         {
-            return Repository.UpdateAsync(artist);
+            try
+            {
+                return Repository.UpdateAsync(artist);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public async Task<int> DeleteAsync(Guid id)
         {
-            return await Repository.DeleteAsync(id);
+            try
+            {
+                return await Repository.DeleteAsync(id);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
         
         #endregion Methods

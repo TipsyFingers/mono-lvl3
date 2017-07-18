@@ -18,8 +18,6 @@ namespace mono_lvl3.DAL.Mapping
 
             this.Property(t => t.Price);
 
-
-
             // Table and Column mappings
             this.ToTable("Albums");
             this.Property(t => t.Name).HasColumnName("AlbumName").HasColumnType("NVarchar");

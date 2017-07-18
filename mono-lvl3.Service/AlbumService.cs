@@ -5,7 +5,7 @@ using mono_lvl3.Common.Filters;
 using mono_lvl3.Model.Common;
 using mono_lvl3.Repository.Common;
 using mono_lvl3.Service.Common;
-
+using System.Linq;
 
 namespace mono_lvl3.Service
 {
@@ -80,7 +80,7 @@ namespace mono_lvl3.Service
             }
         }
 
-        public async Task<IAlbum> AddArtistsToAlbum(Guid id, IEnumerable<Guid> artistIds)
+        public async Task<IAlbum> AddArtistsToAlbumAsync(Guid id, IEnumerable<Guid> artistIds)
         {
             try
             {
@@ -91,27 +91,6 @@ namespace mono_lvl3.Service
                 throw e;
             }
         }
-
-        //public async Task<IEnumerable<IAlbum>> AddArtistsToAlbum(Guid id, IEnumerable<Guid> artistIds)
-        //{
-        //    try
-        //    {
-        //        var album = await this.Repository.GetByIDAsync(id);
-                
-        //        foreach(Guid artistId in artistIds)
-        //        {
-        //            var artist = await this.ArtistRepository.GetByIDAsync(artistId);
-        //            album.Artists.Add(artist);
-        //        }
-        //        return album;
-
-                
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        throw e;
-        //    }
-        //}
 
         public async Task<int> DeleteAsync(Guid id)
         {

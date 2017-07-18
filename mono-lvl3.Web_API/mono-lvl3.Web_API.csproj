@@ -214,12 +214,15 @@
     <Content Include="app\controllers\albumArtistsController.js" />
     <Content Include="app\controllers\albumController.js" />
     <Content Include="app\controllers\artistController.js" />
+    <Content Include="app\controllers\songArtistsController.js" />
     <Content Include="app\controllers\songController.js" />
     <Content Include="app\factories\albumFactory.js" />
     <Content Include="app\factories\artistFactory.js" />
     <Content Include="app\factories\songFactory.js" />
     <Content Include="app\services\albumArtistsService.js" />
-    <Content Include="app\views\addArtists.html" />
+    <Content Include="app\services\songArtistsService.js" />
+    <Content Include="app\views\addArtistsAlbum.html" />
+    <Content Include="app\views\addArtistsSong.html" />
     <Content Include="app\views\albums.html" />
     <Content Include="app\views\artists.html" />
     <Content Include="app\views\songs.html" />

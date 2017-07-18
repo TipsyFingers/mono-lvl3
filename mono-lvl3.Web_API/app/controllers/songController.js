@@ -1,7 +1,7 @@
 ﻿(function () {
 
-    var injectParams = ['$scope', '$route', 'songFactory', 'albumFactory'];
-    var SongController = function ($scope, $route, songFactory, albumFactory) {
+    var injectParams = ['$scope', '$route', '$location', 'songFactory', 'albumFactory'];
+    var SongController = function ($scope, $route, $location, songFactory, albumFactory) {
 
         $scope.status;
         $scope.songs;
@@ -82,7 +82,9 @@
             });
         };
 
-        
+        $scope.redirect = function (path) {
+            $location.url(path);
+        }
     };
 
     SongController.$inject = injectParams;

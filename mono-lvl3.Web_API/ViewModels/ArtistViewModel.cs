@@ -12,7 +12,7 @@ namespace mono_lvl3.Web_API.ViewModels
         public string LName { get; set; }
         public string From { get; set; }
 
-        public virtual IEnumerable<Guid> Albums { get; set; }
-        public virtual IEnumerable<Guid> Songs { get; set; }
+        //public virtual IEnumerable<Guid> Albums { get; set; }
+        //public virtual IEnumerable<Guid> Songs { get; set; }
     }
 }

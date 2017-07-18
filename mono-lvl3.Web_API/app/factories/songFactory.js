@@ -21,6 +21,10 @@
             return $http.put(urlBase + '/' + song.id, song);
         };
 
+        factory.addArtists = function (albumId, artistIds) {
+            return $http.post(urlBase + '/' + albumId, artistIds)
+        }
+
         factory.deleteSong = function (id) {
             return $http.delete(urlBase + '/' + id);
         };

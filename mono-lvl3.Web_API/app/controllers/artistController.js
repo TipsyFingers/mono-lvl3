@@ -5,8 +5,8 @@
 
 
         $scope.artists;
-        $scope.albums;
-        $scope.songs;
+        $scope.artistAlbums;
+        $scope.artistSongs;
         $scope.newArtist;
         
         getArtists();
@@ -75,14 +75,39 @@
         };
 
         $scope.getDiscography = function (id) {
-            //artistFactory.getAlbums()
-            //    .then(function (albums) {
-            //        for (var i = 0; i < albums.length; i++) {
-            //            if (albums[i].id == id) {
-            //                $scope.albums.push(albums[i]);
-            //            }
-            //        }
-            //    });
+
+            $scope.artistAlbums = [];
+            $scope.artistSongs = [];
+
+            artistFactory.getAlbums()
+                .success(function (albums) {                    
+                    for (var i = 0; i < albums.length; i++) {
+                        for (var j = 0; j < albums[i].artists.length; j++) {
+                            if (albums[i].artists[j] == id) {
+                                $scope.artistAlbums.push(albums[i]);
+                            }
+                        }
+                    }
+                    $scope.test = 1;
+                })
+            .error(function (error) {
+                $scope.status = 'Unable to get albums: ' + error.message;
+            });
+
+            artistFactory.getSongs()
+                .success(function (songs) {                    
+                    for (var i = 0; i < songs.length; i++) {
+                        for (var j = 0; j < songs[i].artists.length; j++) {
+                            if (songs[i].artists[j] == id) {
+                                $scope.artistSongs.push(songs[i]);
+                            }
+                        }
+                    }
+                    $scope.test = 1;
+                })
+            .error(function (error) {
+                $scope.status = 'Unable to get songs: ' + error.message;
+            });
         };
     };
 

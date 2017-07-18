@@ -44,12 +44,11 @@ namespace mono_lvl3.Web_API.Controllers
         {
             try
             {
-                var artists = await Service.GetAsync(new Filter(searchString, pageNumber, pageSize));
+                var artists = Mapper.Map<IEnumerable<ArtistViewModel>>(await Service.GetAsync(new Filter(searchString, pageNumber, pageSize)));
 
                 if (artists != null)
                 {
-                    return Request.CreateResponse(HttpStatusCode.OK,
-                        Mapper.Map<List<ArtistViewModel>>(artists));
+                    return Request.CreateResponse(HttpStatusCode.OK, artists);
                 }
                 else
                 {

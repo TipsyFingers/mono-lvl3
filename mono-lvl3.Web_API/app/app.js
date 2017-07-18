@@ -21,9 +21,13 @@
                 controller: 'songController',
                 templateUrl: viewBase + 'songs.html'
             })
-            .when('/addArtists/:id', {
+            .when('/addArtistsAlbum/:id', {
                 controller: 'albumArtistsController',
-                templateUrl: viewBase + 'addArtists.html'
+                templateUrl: viewBase + 'addArtistsAlbum.html'
+            })
+            .when('/addArtistsSong/:id', {
+                controller: 'songArtistsController',
+                templateUrl: viewBase + 'addArtistsSong.html'
             })
             .otherwise({ redirectTo: '/' });
 

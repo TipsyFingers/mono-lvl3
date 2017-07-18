@@ -1,0 +1,36 @@
+﻿<div ng-controller="songArtistsController" class="md-padding" ng-cloak style="min-height:270px">
+    <div layout="row" layout-wrap>
+        <div flex="100" flex-gt-sm="50" layout="column">
+            <div>
+                <fieldset class="standard">
+                    <div layout="row" layout-wrap flex>
+                        <div ng-repeat="artist in artists" class="standard" flex="50">
+                            <label>
+                                <input type="checkbox"
+                                       ng-checked="exists(artist.id, selectedArtists)"
+                                       ng-click="toggle(artist.id, selectedArtists)" /> {{ artist.artistName }}
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+
+        <div flex="100">
+            <h2 class="md-title">Selected Items</h2>
+            <code style="display: block; padding: 8px;">{{selectedArtists | json}}</code>
+        </div>
+        <div>
+            <button ng-click="submitArtists(song, selectedArtists)">Submit</button>
+        </div>
+        <br />
+        <span class="status">{{status}}</span>
+        <h2>songId = {{song.id}}</h2>
+        <h3>songName = {{song.name}}</h3>
+        <hr />
+        <h2>JSON output:</h2>
+        <fieldset class="standard">
+            <code style="display: block; padding: 8px;">{{outputJson | json}}</code>
+        </fieldset>
+    </div>
+</div>

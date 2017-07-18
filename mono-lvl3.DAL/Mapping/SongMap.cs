@@ -27,12 +27,8 @@ namespace mono_lvl3.DAL.Mapping
 
             // Relationships
 
-            // 1-* (Album-Song)
-            //this.HasRequired(t => t.Album)
-            //    .WithMany(t => t.Songs)
-            //    .HasForeignKey(d => d.Album_Id);
-
-            this.HasKey(t => t.AlbumId);
+            // 1-* (Album-Song)            
+             this.HasKey(t => t.AlbumId);
 
             // *-* (Song-Artist)
             this.HasMany(t => t.Artists)

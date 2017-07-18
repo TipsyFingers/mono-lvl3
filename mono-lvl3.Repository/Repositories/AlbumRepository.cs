@@ -42,7 +42,7 @@ namespace mono_lvl3.Repository
             {
                 if (filter != null)
                 {
-                    var albums = Mapper.Map<IEnumerable<AlbumDomainModel>>( //IQueryable vs (IEnumerable & List)
+                    var albums = Mapper.Map<IEnumerable<IAlbum>>( //IQueryable vs (IEnumerable & List)
                         await Repository.GetWhere<Album>()
                         .OrderBy(a => a.Name)
                         .ToListAsync());
@@ -50,11 +50,11 @@ namespace mono_lvl3.Repository
                     if (!string.IsNullOrWhiteSpace(filter.SearchString))
                     {
                         albums = albums.Where(a => a.Name.ToUpper()
-                            .Contains(filter.SearchString.ToUpper()))
-                            .ToList();
+                            .Contains(filter.SearchString.ToUpper()));
                     }
 
                     return albums;
+                    //return Mapper.Map<IEnumerable<IAlbum>>(albums);
                 }
                 else
                 {
@@ -91,22 +91,17 @@ namespace mono_lvl3.Repository
         {
             try
             {
-                var album = Mapper.Map<AlbumDomainModel>(await Repository.GetWhere<Album>().Where(a => a.Id == id).FirstOrDefaultAsync());
+                var album = await Repository.GetWhere<Album>().Where(a => a.Id == id).FirstOrDefaultAsync();
                 IUnitOfWork unitOfWork = CreateUnitOfWork();
 
                 foreach (Guid artistId in artistIds)
                 {
-                    var artist = Mapper.Map<ArtistDomainModel>(await Repository.GetWhere<Artist>().Where(a => a.Id == artistId).FirstOrDefaultAsync());
+                    var artist = await Repository.GetWhere<Artist>().Where(a => a.Id == artistId).FirstOrDefaultAsync();
                     album.Artists.Add(artist);
-                    
-                    //await uow.AddAsync<Album>(Mapper.Map<Album>(album.Artists));
                 }
-                //var abcd = await unitOfWork.UpdateAsync(Mapper.Map<Album>(album));
-                //await uow.AddAsync<Album>(Mapper.Map<Album>(album));
-                //var abc = await unitOfWork.CommitAsync();
-                var avc = await Repository.UpdateAsync(Mapper.Map<Album>(album));
-
-                return album;
+                await Repository.UpdateAsync(album);
+                album = await Repository.GetByIDAsync<Album>(id);
+                return Mapper.Map<AlbumDomainModel>(album);
             }
             catch (Exception e)
             {
